@@ -1,0 +1,134 @@
+(99) 98130-4000 ajjb@live.com
+Trabalho em equipe;
+Liderança;
+Pensamento criativo;
+Resolução de problemas;
+Gestão;
+TOTVS;
+Programação.
+Português - Nativo
+Inglês - Médio
+Disponibilidade para mudança
+de cidade ou estado.EXPERIÊNCIA
+Desenvolvedor Python com experiência em Django, Django REST
+Framework, SQL e ORMs.
+Atua em ambientes Cloud Native, Docker e com Git Flow.
+Habilidade com frameworks como FastAPI e Flask para APIs
+escaláveis. Conhecimento em machine learning e visão
+computacional (TensorFlow, PyTorch, OpenCV).
+Focado em práticas DevOps para automação e alta disponibilidade.PERFIL PROFISSIONAL
+HABILIDADES
+IDIOMAS
+INFORMAÇÕES ADICIONAISANTONIO JOSÉ BEZERRA
+ASSUNÇÃO COSTA FILHO
+https://www.linkedin.com/in/antonio-
+jos%C3%A9-b-a-c-filho-78332b183/(99) 98136-6219
+OBJETIVO
+Atuar como Desenvolvedor Python, aplicando conhecimento em
+Django, APIs REST e práticas DevOps para desenvolver soluções
+escaláveis, seguras e de alta disponibilidade. Utilizar expertise
+em SQL, ORMs, e ferramentas como Docker para otimizar o
+desempenho de sistemas, contribuindo para a automação de
+processos e a eficiência operacional.Desenvolvedor Python
+Responsável pela Gestão de Infraestrutura e Sistemas de TI,
+lidero a equipe de suporte, gerencio servidores com foco em
+segurança e eficiência e sou especialista em ERP TOTVS RM. Atuo
+no desenvolvimento de soluções web e mobile com Python,
+Django, Django REST Framework, FastAPI e Flask, com forte
+experiência na criação de APIs e integração com bancos de
+dados. Com habilidades em DevOps, automatizo processos e
+monitoro sistemas para garantir alta disponibilidade. Também
+sou responsável por gerenciar projetos de TIC e negociar
+contratos com fornecedores, assegurando soluções alinhadas às
+necessidades e metas da empresa.Itapecuru Bioenergia, Aldeias Altas- Ma
+Coordenador de TI • Outubro 2024– Atual
+Experiência no suporte ao ERP TOTVS RM, atuando com banco
+de dados SQL Server para garantir a integridade e o
+desempenho dos sistemas. Desempenhando a função de
+realizar a integração e implantação de novos módulos, além da
+criação de reports dinâmicos no TOTVS RM para atender às
+demandas de relatórios personalizados. Presto suporte aos
+usuários em diversos módulos, incluindo os módulos
+financeiros, gestão de compras, estoque e faturamento.
+Desenvolvo fórmulas visuais e personalizações dentro do
+sistema para otimizar processos e melhorar a eficiência no
+atendimento às necessidades da organização.UniFacema, Caxias - Ma
+Analista de TI • Agosto 2022–Jul 2023
+Infatec, Teresina - Pi
+Supervisor de desenvolvimento de sistemas • março
+2020 –maio 2022
+Responsável por desenvolver soluções web e mobile com
+Python, Django, Django Rest Framework e Bootstrap,
+utilizando PostgreSQL como banco de dados. Implementei
+soluções de hospedagem e infraestrutura na Digital Ocean e
+AWS, sendo responsável pelo deploy e pela segurança da
+informação. Organizei e distribuí tarefas da equipe de
+desenvolvimento usando metodologias ágeis, otimizando o
+processo. Além disso, ofereci treinamentos para equipes
+sobre as tecnologias e práticas adotadas, garantindo uma
+transição eficaz para as novas soluções.Curso de programação Avançada
+Python – Alura;
+Curso de programação Avançada
+Python Django – Alura;
+Curso de programação em
+Avançada Python Django Rest
+Framework – Alura;
+Curso de programação em Android
+- Intermediário – TREINA WEB;
+Curso de framework Hibernate
+Básico Online - RLSYSTEM;
+Curso de banco de dados MySQL
+Online - RLSYSTEM;
+Curso de banco de dados
+PostgreSQL Online - RLSYSTEM;CURSOS DE
+APERFEIÇOAMENTOEXPERIÊNCIA
+Responsável por coordenar a tecnologia, segurança da
+informação, desenvolvimento de software, infraestrutura e redes
+nas unidades da matriz, campus em Codó e Presidente Dutra,
+Clínica Escola e Escola de Ensino Infantil. Lidero equipes de TI,
+supervisionando a implementação de soluções tecnológicas e a
+eficiência dos processos. Administro o sistema TOTVS RM,
+assegurando seu bom funcionamento em todos os ambientes e
+desenvolvo estratégias para otimizar a infraestrutura, garantir a
+segurança e promover inovação em todas as áreas sob minha
+gestão.UniFacema, Caxias - Ma
+Supervisor de TI • julho  2023– Set 2024
+Mega Empreendimentos,Caxias - Ma
+Coord de  Desenvolvimento de sistema web -  • jan
+2012 – abril  2014
+Na Mega Empreendimentos, atuei como programador principal
+e líder da equipe de desenvolvimento. Fui responsável pelo
+desenvolvimento de código e preparação dos bancos de dados
+das aplicações, além de gerenciar a equipe que supervisionava
+as ferramentas. Minha atuação garantiu a implementação
+eficaz das soluções, alinhadas às necessidades da empresa.
+K1 tech Informatica ,Caxias - Ma
+Suporte Tecnico -  • agosto  2009 – outubro  2012
+Trabalhei em uma loja de suporte de informática, onde fui
+responsável pela instalação e manutenção de hardware e
+software, configuração de redes e suporte técnico. Atuei na
+reparação de equipamentos e otimização de sistemas,
+garantindo o pleno funcionamento e a segurança dos
+ambientes tecnológicos dos clientes.Contas a Pagar e Receber 
+Modulo Financeiro
+Gestão de Compras  e Estoque
+Aprovações e Atendimentos
+Reports Dinâmicos, CUBOS
+Formulas Visuais
+Consultas Sql
+Gerencia de UsuariosEXTRA( TOTVS RM)EXPERIÊNCIA
+FORMAÇÃO ACADÊMICA
+Graduado  Analise e desenvolvimento de sistemas
+Pós Graduação em Engenharia de Sistemas Web 
+UniFacema • 2017–2019Unifacema . • 2011–2014
+Pós Graduação em Engenharia de Sistemas Mobile 
+UniFacema • 2017–2019SENAI,Caxias - Ma
+ Professor de Programação e Coord. de Projetos 
+  • mai 2014 – mai 2022
+Responsável por ministrar aulas de programação, desde o
+nível básico até o avançado, no SENAI. Também coordenei as
+equipes do INOVA, um evento de inovação tecnológica entre
+estados. Sob minha gestão, foram apresentados 18 projetos,
+incluindo automação de sistemas, segurança de sistemas e
+equipamentos de EPI inteligentes, dos quais 9 foram
+premiados

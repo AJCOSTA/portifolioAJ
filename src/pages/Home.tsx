@@ -90,17 +90,31 @@ export default function Home({ targetSection, language }: HomeProps) {
       academicPeriod: "Maio 2014 – Maio 2022",
       academicDescription:
         "Ministrei aulas de programação do nível básico ao avançado. Coordenei projetos de inovação tecnológica no evento INOVA, com 18 projetos apresentados e 9 premiados, envolvendo automação, segurança da informação e soluções inteligentes.",
+      academicHighlightsTitle: "Atuação Acadêmica Complementar",
+      academicHighlightsSubtitle: "Docência, capacitação e mentoria em ambientes educacionais.",
+      academicMetricsTitle: "Conquistas Acadêmicas",
+      academicMetricsSubtitle: "Resultados e impacto na formação técnica.",
+      publicationsTitle: "Publicações e Artigos",
+      publicationsSubtitle: "Produções técnicas voltadas à integração e segurança de serviços.",
       educationTitle: "Formação Acadêmica",
+      educationFloat: "Pós-graduação",
       coursesTitle: "Cursos e Aperfeiçoamentos",
+      coursesSubtitle: "Trilhas técnicas que reforçam domínio em backend, APIs, banco de dados e desenvolvimento mobile.",
+      coursesBadgeLeft: "Formação técnica",
+      coursesBadgeRight: "Aprendizado contínuo",
+      certificationsTitle: "Certificações Premium",
+      certificationsSubtitle: "AWS, DevOps, Segurança e Arquitetura de Software.",
       languagesTitle: "Idiomas",
       languages: ["Português: Nativo", "Inglês: Intermediário"],
       objectiveTitle: "Objetivo Profissional",
+      objectiveFloat: "Visão Estratégica",
       objectiveText:
         "Atuar de forma estratégica como Desenvolvedor Python e Gestor de TI, aplicando conhecimento técnico e visão de negócio para criar soluções escaláveis, seguras e de alto impacto, promovendo eficiência operacional, inovação e crescimento sustentável das organizações.",
       contactTitle: "Contato",
       contactTag: "Disponível para projetos estratégicos",
       contactSubtitle:
         "Vamos conversar sobre liderança, arquitetura e soluções de alto impacto.",
+      contactFloat: "Canal direto",
       contactAvailability: "Disponível para projetos",
       contactLocation: "Caxias, Maranhão, Brasil",
     },
@@ -158,16 +172,30 @@ export default function Home({ targetSection, language }: HomeProps) {
       academicPeriod: "May 2014 – May 2022",
       academicDescription:
         "Taught programming from basic to advanced levels. Coordinated innovation projects at the INOVA event, with 18 projects presented and 9 awarded, covering automation, information security, and intelligent solutions.",
+      academicHighlightsTitle: "Additional Academic Work",
+      academicHighlightsSubtitle: "Teaching, training, and mentoring across educational settings.",
+      academicMetricsTitle: "Academic Achievements",
+      academicMetricsSubtitle: "Results and impact in technical education.",
+      publicationsTitle: "Publications & Papers",
+      publicationsSubtitle: "Technical work focused on service integration and security.",
       educationTitle: "Education",
+      educationFloat: "Postgraduate",
       coursesTitle: "Courses & Training",
+      coursesSubtitle: "Technical tracks reinforcing expertise in backend, APIs, databases, and mobile development.",
+      coursesBadgeLeft: "Technical training",
+      coursesBadgeRight: "Continuous learning",
+      certificationsTitle: "Premium Certifications",
+      certificationsSubtitle: "AWS, DevOps, Security, and Software Architecture.",
       languagesTitle: "Languages",
       languages: ["Portuguese: Native", "English: Intermediate"],
       objectiveTitle: "Professional Objective",
+      objectiveFloat: "Strategic Vision",
       objectiveText:
         "Operate strategically as a Python Developer and IT Manager, applying technical expertise and business vision to build scalable, secure, high-impact solutions that drive operational efficiency, innovation, and sustainable growth.",
       contactTitle: "Contact",
       contactTag: "Available for strategic projects",
       contactSubtitle: "Let’s talk about leadership, architecture, and high-impact solutions.",
+      contactFloat: "Direct channel",
       contactAvailability: "Available for projects",
       contactLocation: "Caxias, Maranhão, Brazil",
     },
@@ -211,6 +239,13 @@ export default function Home({ targetSection, language }: HomeProps) {
       title: { pt: "Docência", en: "Teaching" },
       desc: { pt: "Capacitação técnica", en: "Technical training" },
     },
+  ];
+
+  const premiumCertifications = [
+    { icon: Cloud, label: { pt: "AWS Cloud", en: "AWS Cloud" } },
+    { icon: Cpu, label: { pt: "DevOps & SRE", en: "DevOps & SRE" } },
+    { icon: ShieldCheck, label: { pt: "Segurança da Informação", en: "Information Security" } },
+    { icon: LayoutTemplate, label: { pt: "Arquitetura de Software", en: "Software Architecture" } },
   ];
 
   const projects = [
@@ -465,12 +500,74 @@ export default function Home({ targetSection, language }: HomeProps) {
       period: "Outubro 2024 – Atual",
       desc: {
         pt: [
-          "Responsável pela gestão completa de infraestrutura, sistemas e segurança da informação. Lidero a equipe de suporte e desenvolvimento, administro servidores com foco em eficiência e segurança, atuo como especialista em TOTVS RM e desenvolvo soluções web e APIs utilizando Python e Django.",
-          "Atuo diretamente na gestão de projetos de TIC, automação de processos, monitoramento de sistemas críticos e negociação com fornecedores, garantindo alinhamento tecnológico às metas estratégicas da empresa.",
+          "Responsável pela Gestão de Infraestrutura e Sistemas de TI, liderando equipe de suporte e desenvolvimento com foco em excelência operacional e treinamento contínuo.",
+          "Gerenciamento de infraestrutura de servidores, implementação de protocolos de segurança e especialista em ERP TOTVS RM para otimização de processos empresariais.",
+          "Desenvolvimento de soluções web e mobile com Python, implementando sistemas dinâmicos e escaláveis. Expertise em automações e otimizações usando bancos de dados.",
+          "Elaboração e gestão de projetos TIC, monitoramento proativo de sistemas e negociação com fornecedores, garantindo alinhamento estratégico e eficiência operacional."
         ],
         en: [
-          "Responsible for end-to-end infrastructure, systems, and information security. Lead support and development teams, manage servers for efficiency and security, act as TOTVS RM specialist, and deliver web solutions and APIs using Python and Django.",
-          "Lead ICT projects, process automation, critical system monitoring, and vendor negotiations, ensuring technology aligns with strategic business goals.",
+          "Infrastructure and IT Systems Management, leading support and development team with focus on operational excellence and continuous training.",
+          "Server infrastructure management, security protocols implementation, and TOTVS RM ERP specialist for business process optimization.",
+          "Web and mobile solutions development with Python, implementing dynamic and scalable systems. Expertise in automation and optimization using databases.",
+          "ICT project management, proactive system monitoring, and vendor negotiations, ensuring strategic alignment and operational efficiency."
+        ],
+      },
+    },
+    {
+      role: { pt: "Gestor de TI", en: "IT Manager" },
+      company: "UniFacema – Caxias/MA",
+      period: "Julho 2022 – Outubro 2024",
+      desc: {
+        pt: [
+          "Desenvolvimento de soluções com Python e Django REST Framework (DRF), integrando sistemas com TOTVS RM.",
+          "Gerenciamento de equipe de 4 profissionais entre desenvolvimento e infraestrutura, trabalhando com SQL Server e consultas complexas.",
+          "Criação de relatórios, fórmulas visuais e automações para áreas de educação, financeiro e atendimentos."
+        ],
+        en: [
+          "Solution development with Python and Django REST Framework (DRF), integrating systems with TOTVS RM.",
+          "Team management of 4 professionals across development and infrastructure, working with SQL Server and complex queries.",
+          "Creation of reports, visual formulas, and automations for education, financial, and service areas."
+        ],
+      },
+    },
+    {
+      role: { pt: "Desenvolvedor de Software Autônomo", en: "Freelance Software Developer" },
+      company: "Autônomo – Caxias/MA",
+      period: "Janeiro 2016 – Junho 2024",
+      desc: {
+        pt: [
+          "Desenvolvimento web e mobile como freelancer, atuando em projetos diversos com tecnologias modernas.",
+          "Docência em programação e informática, ministrando cursos e treinamentos personalizados."
+        ],
+        en: [
+          "Web and mobile development as a freelancer, working on various projects with modern technologies.",
+          "Programming and IT teaching, delivering customized courses and training."
+        ],
+      },
+    },
+    {
+      role: { pt: "Professor de Informática", en: "IT Professor" },
+      company: "SESI/SENAI – Caxias/MA",
+      period: "Abril 2015 – Outubro 2015",
+      desc: {
+        pt: [
+          "Ministração de aulas de programação e informática básica, desenvolvendo material didático e projetos práticos."
+        ],
+        en: [
+          "Teaching programming and basic computer skills, developing educational materials and practical projects."
+        ],
+      },
+    },
+    {
+      role: { pt: "Desenvolvedor de Software", en: "Software Developer" },
+      company: "Mega Empreendimentos – Caxias/MA",
+      period: "Agosto 2013 – Novembro 2014",
+      desc: {
+        pt: [
+          "Desenvolvimento web e mobile com Java e Python, trabalhando com bancos de dados relacionais."
+        ],
+        en: [
+          "Web and mobile development with Java and Python, working with relational databases."
         ],
       },
     },
@@ -554,26 +651,172 @@ export default function Home({ targetSection, language }: HomeProps) {
     ],
   };
 
-  const coursesItems = {
-    pt: [
-      "Python Avançado – Alura",
-      "Django Avançado – Alura",
-      "Django REST Framework – Alura",
-      "Android Intermediário – TreinaWeb",
-      "Hibernate Básico – RLSYSTEM",
-      "MySQL – RLSYSTEM",
-      "PostgreSQL – RLSYSTEM",
-    ],
-    en: [
-      "Advanced Python – Alura",
-      "Advanced Django – Alura",
-      "Django REST Framework – Alura",
-      "Intermediate Android – TreinaWeb",
-      "Hibernate Fundamentals – RLSYSTEM",
-      "MySQL – RLSYSTEM",
-      "PostgreSQL – RLSYSTEM",
-    ],
-  };
+  const coursesItems = [
+    {
+      icon: Code2,
+      title: { pt: "Python Avançado", en: "Advanced Python" },
+      provider: "Alura",
+      focus: {
+        pt: "Arquitetura, automação e boas práticas para APIs escaláveis.",
+        en: "Architecture, automation, and best practices for scalable APIs.",
+      },
+    },
+    {
+      icon: Layers,
+      title: { pt: "Django Avançado", en: "Advanced Django" },
+      provider: "Alura",
+      focus: {
+        pt: "Aplicações robustas com segurança, performance e organização de domínio.",
+        en: "Robust applications with security, performance, and domain structure.",
+      },
+    },
+    {
+      icon: Globe2,
+      title: { pt: "Django REST Framework", en: "Django REST Framework" },
+      provider: "Alura",
+      focus: {
+        pt: "APIs REST, autenticação, serialização e versionamento.",
+        en: "REST APIs, authentication, serialization, and versioning.",
+      },
+    },
+    {
+      icon: Phone,
+      title: { pt: "Android Intermediário", en: "Intermediate Android" },
+      provider: "TreinaWeb",
+      focus: {
+        pt: "Apps nativos integrados a serviços e APIs corporativas.",
+        en: "Native apps integrated with services and corporate APIs.",
+      },
+    },
+    {
+      icon: Database,
+      title: { pt: "Hibernate ORM", en: "Hibernate ORM" },
+      provider: "RLSYSTEM",
+      focus: {
+        pt: "Mapeamento objeto-relacional e persistência consistente de dados.",
+        en: "Object-relational mapping and consistent data persistence.",
+      },
+    },
+    {
+      icon: BarChart3,
+      title: { pt: "MySQL", en: "MySQL" },
+      provider: "RLSYSTEM",
+      focus: {
+        pt: "Modelagem relacional, índices e otimização de consultas.",
+        en: "Relational modeling, indexing, and query optimization.",
+      },
+    },
+    {
+      icon: LineChart,
+      title: { pt: "PostgreSQL", en: "PostgreSQL" },
+      provider: "RLSYSTEM",
+      focus: {
+        pt: "Consultas avançadas, performance e relatórios estratégicos.",
+        en: "Advanced queries, performance, and strategic reporting.",
+      },
+    },
+    {
+      icon: Cloud,
+      title: { pt: "Cloud Native & DevOps", en: "Cloud Native & DevOps" },
+      provider: "Docker, Git Flow, AWS, DigitalOcean",
+      focus: {
+        pt: "Deploy automatizado, observabilidade e gestão de ambientes escaláveis.",
+        en: "Automated deployments, observability, and scalable environments.",
+      },
+    },
+    {
+      icon: Cpu,
+      title: { pt: "Machine Learning & Visão Computacional", en: "Machine Learning & Computer Vision" },
+      provider: "TensorFlow, PyTorch, OpenCV",
+      focus: {
+        pt: "Modelos preditivos, visão computacional e prototipagem aplicada.",
+        en: "Predictive models, computer vision, and applied prototyping.",
+      },
+    },
+    {
+      icon: LayoutTemplate,
+      title: { pt: "ERP TOTVS RM", en: "ERP TOTVS RM" },
+      provider: "Administração e integrações",
+      focus: {
+        pt: "Implantação de módulos, relatórios e customizações estratégicas.",
+        en: "Module rollouts, reporting, and strategic customizations.",
+      },
+    },
+    {
+      icon: BarChart3,
+      title: { pt: "Dashboards & BI", en: "Dashboards & BI" },
+      provider: "Reports, cubos e SQL avançado",
+      focus: {
+        pt: "Painéis executivos e insights para tomada de decisão.",
+        en: "Executive dashboards and decision-making insights.",
+      },
+    },
+  ];
+
+  const academicHighlights = [
+    {
+      icon: GraduationCap,
+      title: { pt: "Ministrante do Curso de Fundamentos de Informática", en: "Fundamentals of Computing Instructor" },
+      org: { pt: "Colégio Santo Antonio", en: "Colégio Santo Antonio" },
+      period: { pt: "Abr 2016 – Set 2016", en: "Apr 2016 – Sep 2016" },
+    },
+    {
+      icon: BookOpen,
+      title: { pt: "Professor de Informática", en: "Computer Science Instructor" },
+      org: { pt: "SESI/SENAI", en: "SESI/SENAI" },
+      period: { pt: "Abr 2015 – Out 2015", en: "Apr 2015 – Oct 2015" },
+    },
+    {
+      icon: Users,
+      title: { pt: "Treinamentos para equipes internas", en: "Internal team training" },
+      org: { pt: "Python, APIs, DevOps e boas práticas", en: "Python, APIs, DevOps, and best practices" },
+      period: { pt: "Programas recorrentes", en: "Recurring programs" },
+    },
+  ];
+
+  const publications = [
+    {
+      title: {
+        pt: "Integração do Serviço Bluetooth ao Honeypotlabsac",
+        en: "Integration of the Bluetooth Service into Honeypotlabsac",
+      },
+      area: { pt: "Segurança IoT", en: "IoT Security" },
+    },
+    {
+      title: {
+        pt: "Integração do Serviço FTP ao Honeypotlabsac",
+        en: "Integration of the FTP Service into Honeypotlabsac",
+      },
+      area: { pt: "Segurança de Rede", en: "Network Security" },
+    },
+  ];
+
+  const academicMetrics = [
+    {
+      icon: Rocket,
+      value: "18",
+      label: { pt: "Projetos Coordenados", en: "Projects Coordinated" },
+      desc: { pt: "Automação, segurança e IoT", en: "Automation, security, and IoT" },
+    },
+    {
+      icon: Target,
+      value: "9",
+      label: { pt: "Projetos Premiados", en: "Award-winning Projects" },
+      desc: { pt: "Reconhecimento INOVA", en: "INOVA Recognition" },
+    },
+    {
+      icon: Users,
+      value: "4+",
+      label: { pt: "Anos de Docência", en: "Years Teaching" },
+      desc: { pt: "Programação e TI", en: "Programming & IT" },
+    },
+    {
+      icon: BookOpen,
+      value: "2",
+      label: { pt: "Artigos Publicados", en: "Published Papers" },
+      desc: { pt: "Segurança e Integração", en: "Security & Integration" },
+    },
+  ];
 
   const skillsContent = {
     pt: {
@@ -699,10 +942,10 @@ export default function Home({ targetSection, language }: HomeProps) {
       
       {/* 1. HERO SECTION */}
       <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 bg-secondary/30 relative overflow-hidden">
-        <div className="pointer-events-none absolute left-10 top-24 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur">
+        <div className="pointer-events-none absolute left-6 top-16 flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
           <Sparkles className="h-4 w-4" /> {t.heroFloatLeft}
         </div>
-        <div className="pointer-events-none absolute right-16 top-32 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur">
+        <div className="pointer-events-none absolute right-6 top-24 flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
           <Globe2 className="h-4 w-4" /> {t.heroFloatRight}
         </div>
         <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -760,7 +1003,7 @@ export default function Home({ targetSection, language }: HomeProps) {
       {/* 2. APRESENTAÇÃO PROFISSIONAL (Sobre) */}
       <section id="about" className="py-20 bg-background relative overflow-hidden">
         <div className="absolute -left-10 top-10 hidden h-36 w-36 rounded-full bg-primary/10 blur-3xl md:block" />
-        <div className="absolute right-10 bottom-10 hidden md:flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
+        <div className="absolute right-6 bottom-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Code2 className="h-4 w-4" /> {t.aboutFloat}
         </div>
         <div className="container px-6 mx-auto max-w-4xl">
@@ -774,6 +1017,20 @@ export default function Home({ targetSection, language }: HomeProps) {
                 {paragraph}
               </p>
             ))}
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/20 bg-background/70 p-6 text-center">
+            <div className="flex items-center justify-center gap-2 text-primary font-semibold">
+              <Award className="h-5 w-5" /> {t.certificationsTitle}
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">{t.certificationsSubtitle}</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {premiumCertifications.map((cert) => (
+                <div key={cert.label.pt} className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+                  <cert.icon className="h-4 w-4" /> {cert.label[language]}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -807,7 +1064,7 @@ export default function Home({ targetSection, language }: HomeProps) {
 
       {/* 4. PRINCIPAIS QUALIDADES */}
       <section id="qualities" className="py-20 bg-primary/5 relative">
-        <div className="absolute right-10 top-10 hidden md:flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
+        <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Users className="h-4 w-4" /> {t.qualitiesFloat}
         </div>
         <div className="container px-6 mx-auto">
@@ -845,7 +1102,7 @@ export default function Home({ targetSection, language }: HomeProps) {
 
       {/* 6. HABILIDADES TÉCNICAS (Com Logos) */}
       <section id="skills" className="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute right-10 top-10 hidden md:flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80">
+        <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80 z-50">
           <Cloud className="h-4 w-4" /> {t.skillsFloat}
         </div>
         <div className="container px-6 mx-auto">
@@ -936,7 +1193,7 @@ export default function Home({ targetSection, language }: HomeProps) {
 
       {/* 7. PROJETOS */}
       <section id="projects" className="py-20 bg-secondary/10 relative overflow-hidden">
-        <div className="absolute left-6 top-16 hidden md:block">
+        <div className="absolute left-6 top-10 flex z-50">
           <div className="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
             <Rocket className="h-4 w-4" /> {t.projectsFloat}
           </div>
@@ -993,7 +1250,7 @@ export default function Home({ targetSection, language }: HomeProps) {
 
       {/* 8. EXPERIÊNCIA PROFISSIONAL */}
       <section id="experience" className="py-20 bg-background relative">
-        <div className="absolute right-10 top-10 hidden md:flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
+        <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Briefcase className="h-4 w-4" /> {t.experienceFloat}
         </div>
         <div className="container px-6 mx-auto max-w-5xl">
@@ -1043,11 +1300,79 @@ export default function Home({ targetSection, language }: HomeProps) {
               </p>
             </CardContent>
           </Card>
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-6">
+              <Card className="bg-background/80 border border-border/60">
+                <CardHeader>
+                  <CardTitle>{t.academicMetricsTitle}</CardTitle>
+                  <CardDescription>{t.academicMetricsSubtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4">
+                    {academicMetrics.map((metric) => (
+                      <div key={metric.label.pt} className="p-4 rounded-xl bg-primary/5 border border-primary/10">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <metric.icon className="h-4 w-4 text-primary" />
+                          </div>
+                          <span className="text-2xl font-bold text-primary">{metric.value}</span>
+                        </div>
+                        <p className="font-medium text-sm">{metric.label[language]}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{metric.desc[language]}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="bg-background/80 border border-border/60">
+                <CardHeader>
+                  <CardTitle>{t.academicHighlightsTitle}</CardTitle>
+                  <CardDescription>{t.academicHighlightsSubtitle}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {academicHighlights.map((item) => (
+                    <div key={item.title.pt} className="flex items-start gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <item.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground">{item.title[language]}</p>
+                        <p className="text-sm text-muted-foreground">{item.org[language]}</p>
+                        <span className="text-xs text-primary/70">{item.period[language]}</span>
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
+            <Card className="bg-background/80 border border-border/60">
+              <CardHeader>
+                <CardTitle>{t.publicationsTitle}</CardTitle>
+                <CardDescription>{t.publicationsSubtitle}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {publications.map((publication) => (
+                  <div key={publication.title.pt} className="flex items-start gap-3">
+                    <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{publication.title[language]}</p>
+                      <span className="text-xs text-primary/70">{publication.area[language]}</span>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* 10. FORMAÇÃO ACADÊMICA */}
-      <section id="education" className="py-20">
+      <section id="education" className="py-20 relative overflow-hidden">
+        <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
+          <GraduationCap className="h-4 w-4" /> {t.educationFloat}
+        </div>
         <div className="container px-6 mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">{t.educationTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1066,15 +1391,34 @@ export default function Home({ targetSection, language }: HomeProps) {
       </section>
 
       {/* 11. CURSOS E APERFEIÇOAMENTOS */}
-      <section id="courses" className="py-20 bg-secondary/20">
-        <div className="container px-6 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-12 text-center">{t.coursesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {coursesItems[language].map((course, idx) => (
-              <div key={idx} className="flex items-center gap-3 p-4 bg-background rounded-lg shadow-sm border border-border">
-                <Award className="w-5 h-5 text-primary" />
-                <span className="font-medium">{course}</span>
-              </div>
+      <section id="courses" className="py-20 bg-secondary/20 relative overflow-hidden">
+        <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
+          <Award className="h-4 w-4" /> {t.coursesBadgeLeft}
+        </div>
+        <div className="absolute right-6 bottom-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
+          <Sparkles className="h-4 w-4" /> {t.coursesBadgeRight}
+        </div>
+        <div className="container px-6 mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold">{t.coursesTitle}</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">{t.coursesSubtitle}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {coursesItems.map((course) => (
+              <Card key={course.title.pt} className="bg-background/80 backdrop-blur-sm border border-border/60 hover:border-primary/40 hover:shadow-md transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                      <course.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">{course.title[language]}</h3>
+                      <p className="text-sm text-muted-foreground">{course.provider}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{course.focus[language]}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
           
@@ -1092,7 +1436,10 @@ export default function Home({ targetSection, language }: HomeProps) {
       </section>
 
       {/* 12. OBJETIVO PROFISSIONAL */}
-      <section id="objective" className="py-20 bg-primary text-primary-foreground">
+      <section id="objective" className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+        <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80 z-50">
+          <Target className="h-4 w-4" /> {t.objectiveFloat}
+        </div>
         <div className="container px-6 mx-auto text-center max-w-4xl">
           <h2 className="text-3xl font-bold mb-8">{t.objectiveTitle}</h2>
           <p className="text-xl md:text-2xl leading-relaxed font-medium">
@@ -1105,6 +1452,9 @@ export default function Home({ targetSection, language }: HomeProps) {
       <section id="contact" className="py-20 bg-slate-950 text-white relative overflow-hidden">
         <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80 z-50">
+          <Mail className="h-4 w-4" /> {t.contactFloat}
+        </div>
         <div className="container px-6 mx-auto text-center relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80">
             <Sparkles className="h-4 w-4" /> {t.contactTag}
