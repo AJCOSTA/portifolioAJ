@@ -19,10 +19,10 @@ import { motion } from "framer-motion";
 
 interface HomeProps {
   targetSection?: string;
-  language: "pt" | "en";
+  language?: "pt" | "en";
 }
 
-export default function Home({ targetSection, language }: HomeProps) {
+export default function Home({ targetSection, language = "pt" }: HomeProps) {
   useEffect(() => {
     if (targetSection) {
       document.getElementById(targetSection)?.scrollIntoView({ behavior: "smooth" });
@@ -45,7 +45,7 @@ export default function Home({ targetSection, language }: HomeProps) {
         "Mais de 13 anos combinando desenvolvimento fullstack, APIs REST e gestão estratégica para entregar resultados concretos para os negócios.",
       heroCtaPrimary: "Entrar em Contato",
       heroCtaSecondary: "Ver Experiência",
-      heroFloatLeft: "Cloud Native",
+     
       heroFloatRight: "APIs & Integrações",
       aboutTitle: "Apresentação Profissional",
       aboutFloat: "Fullstack & APIs",
@@ -938,35 +938,82 @@ export default function Home({ targetSection, language }: HomeProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans relative">
+      <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_55%)]" />
 
       {/* 1. HERO SECTION */}
-      <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/40 via-background to-background dark:from-blue-950/20 dark:via-background dark:to-background relative overflow-hidden">
-        <div className="pointer-events-none absolute left-6 top-16 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
-          <Sparkles className="h-4 w-4" /> {t.heroFloatLeft}
+      <section id="home" className="pt-16 pb-16 md:pt-28 md:pb-28 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.01] pointer-events-none" />
+        
+        {/* Subtle Professional Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Gradiente sutil no topo */}
+          <div className="absolute top-0 inset-x-0 h-64 bg-linear-to-b from-blue-500/3 to-transparent" />
+          
+          {/* Elementos decorativos mais sutis */}
+          <div className="absolute -top-20 left-1/4 w-64 h-64 bg-blue-500/2 rounded-full blur-3xl" />
+          <div className="absolute top-40 right-1/4 w-56 h-56 bg-indigo-500/2 rounded-full blur-3xl" />
+          
+          {/* Linha decorativa superior */}
+          <div className="absolute top-32 left-0 right-0 h-px bg-primary/3" />
+          
+          {/* Linhas decorativas laterais */}
+          <div className="absolute top-0 bottom-0 left-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
+          <div className="absolute top-0 bottom-0 right-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
         </div>
-        <div className="pointer-events-none absolute right-8 top-12 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
-          <Globe2 className="h-4 w-4" /> {t.heroFloatRight}
+        
+        {/* Tech Badges - Design premium com efeito de vidro */}
+        <div className="absolute left-6 top-24 hidden md:block z-20">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            className="flex items-center gap-2 rounded-full border border-primary/30 bg-white/95 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur-md hover:border-primary/50 transition-all duration-300">
+            <Sparkles className="h-4 w-4 text-primary" /> {t.heroFloatLeft}
+          </motion.div>
         </div>
-        <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        <div className="absolute right-6 top-24 hidden md:block z-20">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            className="flex items-center gap-2 rounded-full border border-primary/30 bg-white/95 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur-md hover:border-primary/50 transition-all duration-300">
+            <Globe2 className="h-4 w-4 text-primary" /> {t.heroFloatRight}
+          </motion.div>
+        </div>
+        
+        <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-              <Terminal className="mr-2 h-4 w-4" />
-              {t.heroBadge}
+            <div className="flex flex-col gap-3">
+              <div className="inline-flex items-center self-start rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary shadow-sm">
+                <Terminal className="mr-2 h-4 w-4" />
+                {t.heroBadge}
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-2 mt-1">
+                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">13+ anos</span>
+                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">SaaS & APIs</span>
+                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">Cloud & DevOps</span>
+              </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              {t.heroTitlePrefix} <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 animate-gradient-x pb-2">{t.heroTitleHighlight}</span> {t.heroTitleSuffix}
+              {t.heroTitlePrefix} <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-700 via-indigo-600 to-blue-700 animate-gradient-x pb-2">{t.heroTitleHighlight}</span> {t.heroTitleSuffix}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
               {t.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="rounded-md px-8 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="rounded-md px-8 font-semibold bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 {t.heroCtaPrimary}
               </Button>
               <Button size="lg" variant="outline" className="rounded-md px-8" onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -1004,20 +1051,58 @@ export default function Home({ targetSection, language }: HomeProps) {
         <div className="absolute right-6 bottom-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Code2 className="h-4 w-4" /> {t.aboutFloat}
         </div>
-
-        {/* Tech Float Card - APIs (Distributed) */}
-        <div className="absolute top-10 right-4 md:right-10 hidden md:flex bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[4500ms] delay-500 z-40 opacity-90">
-          <div className="flex items-center gap-2">
-            <Globe2 className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
-            <span className="text-xs font-bold md:text-sm text-foreground">APIs</span>
-          </div>
+        <motion.div
+          className="absolute top-10 right-10 w-64 h-64 bg-linear-to-br from-primary/5 to-blue-500/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-48 h-48 bg-linear-to-tr from-indigo-500/5 to-primary/5 rounded-full blur-2xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+        
+        <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
+          <Sparkles className="h-4 w-4" /> {t.aboutFloat}
         </div>
+        
+        {/* Floating Tech Icons */}
+        <motion.div
+          className="absolute top-20 right-20 text-primary/10"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <Code2 className="w-16 h-16" />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-20 left-20 text-primary/10"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        >
+          <Database className="w-12 h-12" />
+        </motion.div>
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="container px-6 mx-auto max-w-4xl"
+          className="container px-6 mx-auto max-w-4xl relative z-10"
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{t.aboutTitle}</h2>
@@ -1025,25 +1110,45 @@ export default function Home({ targetSection, language }: HomeProps) {
           </div>
           <div className="prose prose-lg dark:prose-invert mx-auto text-muted-foreground leading-relaxed text-justify">
             {t.aboutParagraphs.map((paragraph, index) => (
-              <p key={index} className={index === 0 ? "mb-6" : undefined}>
+              <motion.p 
+                key={index} 
+                className={index === 0 ? "mb-6" : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
                 {paragraph}
-              </p>
+              </motion.p>
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/20 bg-background/70 p-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-10 rounded-2xl border border-primary/20 bg-background/70 p-6 text-center backdrop-blur-sm"
+          >
             <div className="flex items-center justify-center gap-2 text-primary font-semibold">
               <Award className="h-5 w-5" /> {t.certificationsTitle}
             </div>
             <p className="mt-2 text-sm text-muted-foreground">{t.certificationsSubtitle}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              {premiumCertifications.map((cert) => (
-                <div key={cert.label.pt} className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+              {premiumCertifications.map((cert, idx) => (
+                <motion.div
+                  key={cert.label.pt}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/10 transition-colors"
+                >
                   <cert.icon className="h-4 w-4" /> {cert.label[language]}
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -1514,7 +1619,7 @@ export default function Home({ targetSection, language }: HomeProps) {
                 key={item.label.pt}
                 type="button"
                 onClick={() => window.open(item.href, "_blank")}
-                className={`group rounded-2xl border border-white/10 bg-gradient-to-br ${item.accent} to-transparent p-4 text-left transition hover:-translate-y-1 hover:border-white/30`}
+                className={`group rounded-2xl border border-white/10 bg-linear-to-br ${item.accent} to-transparent p-4 text-left transition hover:-translate-y-1 hover:border-white/30`}
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">

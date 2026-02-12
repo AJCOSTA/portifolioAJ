@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Toaster } from "@/components/ui/sonner";
+// Toaster removido para eliminar espaço em branco
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Router, Route, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -11,13 +10,13 @@ import { Navbar } from "@/components/Navbar";
 // Use hash-based routing (/#/) to support opening index.html directly via file:// protocol
 // Tolerant routing: unmatched paths are treated as anchor sections (e.g., /#/services → scroll to #services)
 // For in-page anchors, use <Link href="/section"> instead of <a href="#section">
-function AppRouter({ language }: { language: "pt" | "en" }) {
+function AppRouter() {
   return (
     <Router hook={useHashLocation}>
       <Switch>
         {/* Add explicit routes here, e.g.: <Route path="/login" component={LoginPage} /> */}
         <Route path="/:section?">
-          {(params) => <Home targetSection={params.section} language={language} />}
+          {(params) => <Home targetSection={params.section} />}
         </Route>
       </Switch>
     </Router>
@@ -30,18 +29,12 @@ function AppRouter({ language }: { language: "pt" | "en" }) {
 // - If you want switchable themes, add `switchable` prop and use `useTheme` hook
 
 function App() {
-  const [language, setLanguage] = useState<"pt" | "en">("pt");
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "pt" ? "en" : "pt"));
-  };
-
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
-          <Toaster />
-          <Navbar language={language} onLanguageToggle={toggleLanguage} />
-          <AppRouter language={language} />
+          <Navbar />
+          <AppRouter />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
