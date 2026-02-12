@@ -45,7 +45,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         "Mais de 13 anos combinando desenvolvimento fullstack, APIs REST e gestão estratégica para entregar resultados concretos para os negócios.",
       heroCtaPrimary: "Entrar em Contato",
       heroCtaSecondary: "Ver Experiência",
-     
+      heroFloatLeft: "",
       heroFloatRight: "APIs & Integrações",
       aboutTitle: "Apresentação Profissional",
       aboutFloat: "Fullstack & APIs",
