@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Terminal, Server, Database, Code2, LayoutTemplate, Cpu, Users, 
-  Briefcase, GraduationCap, Mail, Linkedin, Github, ExternalLink, 
+import {
+  Terminal, Server, Database, Code2, LayoutTemplate, Cpu, Users,
+  Briefcase, GraduationCap, Mail, Linkedin, Github, ExternalLink,
   CheckCircle2, Building2, MapPin, Calendar, Award, BookOpen, Target,
   Phone, Sparkles, Cloud, BarChart3, Layers, LineChart, ShieldCheck,
   Lock, Globe2, Rocket
@@ -939,17 +939,17 @@ export default function Home({ targetSection, language }: HomeProps) {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
-      
+
       {/* 1. HERO SECTION */}
-      <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 bg-secondary/30 relative overflow-hidden">
-        <div className="pointer-events-none absolute left-6 top-16 flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
+      <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/40 via-background to-background dark:from-blue-950/20 dark:via-background dark:to-background relative overflow-hidden">
+        <div className="pointer-events-none absolute left-6 top-16 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
           <Sparkles className="h-4 w-4" /> {t.heroFloatLeft}
         </div>
-        <div className="pointer-events-none absolute right-6 top-24 flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
+        <div className="pointer-events-none absolute right-8 top-12 hidden md:flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur z-50">
           <Globe2 className="h-4 w-4" /> {t.heroFloatRight}
         </div>
         <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -960,42 +960,40 @@ export default function Home({ targetSection, language }: HomeProps) {
               {t.heroBadge}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              {t.heroTitlePrefix} <span className="text-primary">{t.heroTitleHighlight}</span> {t.heroTitleSuffix}
+              {t.heroTitlePrefix} <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 animate-gradient-x pb-2">{t.heroTitleHighlight}</span> {t.heroTitleSuffix}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
               {t.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="rounded-md px-8 font-semibold" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}>
+              <Button size="lg" className="rounded-md px-8 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 {t.heroCtaPrimary}
               </Button>
-              <Button size="lg" variant="outline" className="rounded-md px-8" onClick={() => document.getElementById('experience')?.scrollIntoView({behavior: 'smooth'})}>
+              <Button size="lg" variant="outline" className="rounded-md px-8" onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}>
                 {t.heroCtaSecondary}
               </Button>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center md:justify-end"
+            className="flex justify-center md:justify-end relative"
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
-              <img 
-                src={profilePhoto} 
-                alt="AJ Assunção Costa" 
+              <img
+                src={profilePhoto}
+                alt="AJ Assunção Costa"
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Tech Float Card */}
-            <div className="absolute top-10 right-10 md:right-0 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3000ms]">
-              <img src="https://cdn.simpleicons.org/python/3776AB" className="w-8 h-8" alt="Python" />
+            {/* Tech Float Card - Python (Top Right) */}
+            <div className="absolute -top-6 -right-2 md:top-10 md:-right-24 bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3000ms] z-20">
+              <img src="https://cdn.simpleicons.org/python/3776AB" className="w-8 h-8 md:w-10 md:h-10" alt="Python" />
             </div>
-            <div className="absolute bottom-10 left-10 md:left-20 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[4000ms]">
-               {/* Replaced failing Oracle icon with AWS for hero animation, or just local Oracle */}
-               <img src={oracleLogo} className="w-16 h-auto" alt="Oracle" />
-            </div>
+
+
           </motion.div>
         </div>
       </section>
@@ -1006,7 +1004,21 @@ export default function Home({ targetSection, language }: HomeProps) {
         <div className="absolute right-6 bottom-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Code2 className="h-4 w-4" /> {t.aboutFloat}
         </div>
-        <div className="container px-6 mx-auto max-w-4xl">
+
+        {/* Tech Float Card - APIs (Distributed) */}
+        <div className="absolute top-10 right-4 md:right-10 hidden md:flex bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[4500ms] delay-500 z-40 opacity-90">
+          <div className="flex items-center gap-2">
+            <Globe2 className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
+            <span className="text-xs font-bold md:text-sm text-foreground">APIs</span>
+          </div>
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="container px-6 mx-auto max-w-4xl"
+        >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{t.aboutTitle}</h2>
             <Separator className="w-20 mx-auto bg-primary h-1 rounded-full" />
@@ -1032,7 +1044,7 @@ export default function Home({ targetSection, language }: HomeProps) {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. PERFIL PROFISSIONAL */}
@@ -1082,7 +1094,13 @@ export default function Home({ targetSection, language }: HomeProps) {
 
       {/* 5. ÁREAS DE ATUAÇÃO */}
       <section id="areas" className="py-20 relative">
-        <div className="container px-6 mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="container px-6 mx-auto"
+        >
           <h2 className="text-3xl font-bold mb-12 text-center">{t.areasTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {areas.map((area, idx) => (
@@ -1097,7 +1115,7 @@ export default function Home({ targetSection, language }: HomeProps) {
               </Card>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 6. HABILIDADES TÉCNICAS (Com Logos) */}
@@ -1105,12 +1123,23 @@ export default function Home({ targetSection, language }: HomeProps) {
         <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80 z-50">
           <Cloud className="h-4 w-4" /> {t.skillsFloat}
         </div>
-        <div className="container px-6 mx-auto">
+
+        {/* Tech Float Card - Oracle (Distributed) */}
+        <div className="absolute bottom-20 left-4 md:left-10 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[4000ms] z-40">
+          <img src={oracleLogo} className="w-12 h-auto md:w-16" alt="Oracle" />
+        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="container px-6 mx-auto"
+        >
           <h2 className="text-3xl font-bold mb-16 text-center text-white">{t.skillsTitle}</h2>
-          
+
           {/* Grid de Cards por Categoria */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
+
             {/* Desenvolvimento */}
             <div className="bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="flex items-center gap-4 mb-8">
@@ -1118,11 +1147,11 @@ export default function Home({ targetSection, language }: HomeProps) {
                 <h3 className="text-2xl font-bold">{skillText.developmentTitle}</h3>
               </div>
               <div className="flex flex-wrap gap-6 mb-6">
-                 {/* CDN Icons that worked */}
-                 <img src="https://cdn.simpleicons.org/python/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Python" />
-                 <img src="https://cdn.simpleicons.org/django/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Django" />
-                 <img src="https://cdn.simpleicons.org/fastapi/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="FastAPI" />
-                 <img src="https://cdn.simpleicons.org/flask/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Flask" />
+                {/* CDN Icons that worked */}
+                <img src="https://cdn.simpleicons.org/python/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Python" />
+                <img src="https://cdn.simpleicons.org/django/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Django" />
+                <img src="https://cdn.simpleicons.org/fastapi/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="FastAPI" />
+                <img src="https://cdn.simpleicons.org/flask/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Flask" />
               </div>
               <ul className="space-y-2 text-gray-300">
                 {skillText.developmentList.map((item) => (
@@ -1138,11 +1167,11 @@ export default function Home({ targetSection, language }: HomeProps) {
                 <h3 className="text-2xl font-bold">{skillText.devopsTitle}</h3>
               </div>
               <div className="flex flex-wrap gap-6 mb-6 items-center">
-                 <img src="https://cdn.simpleicons.org/docker/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Docker" />
-                 <img src="https://cdn.simpleicons.org/git/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Git" />
-                 {/* Replaced failing AWS CDN with local image + filter */}
-                 <img src={awsLogo} className="h-8 w-auto opacity-90 hover:opacity-100 transition-opacity brightness-0 invert" title="AWS" alt="AWS" />
-                 <img src="https://cdn.simpleicons.org/digitalocean/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="DigitalOcean" />
+                <img src="https://cdn.simpleicons.org/docker/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Docker" />
+                <img src="https://cdn.simpleicons.org/git/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="Git" />
+                {/* Replaced failing AWS CDN with local image + filter */}
+                <img src={awsLogo} className="h-8 w-auto opacity-90 hover:opacity-100 transition-opacity brightness-0 invert" title="AWS" alt="AWS" />
+                <img src="https://cdn.simpleicons.org/digitalocean/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="DigitalOcean" />
               </div>
               <ul className="space-y-2 text-gray-300">
                 {skillText.devopsList.map((item) => (
@@ -1158,12 +1187,12 @@ export default function Home({ targetSection, language }: HomeProps) {
                 <h3 className="text-2xl font-bold">{skillText.databaseTitle}</h3>
               </div>
               <div className="flex flex-wrap gap-6 mb-6 items-center">
-                 <img src="https://cdn.simpleicons.org/postgresql/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="PostgreSQL" />
-                 <img src="https://cdn.simpleicons.org/mysql/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="MySQL" />
-                 {/* Replaced failing SQL Server CDN with local image + blend mode */}
-                 <img src={sqlserverLogo} className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity mix-blend-screen" title="SQL Server" alt="SQL Server" />
-                 {/* Replaced failing Oracle CDN with local image + filter */}
-                 <img src={oracleLogo} className="h-5 w-auto opacity-90 hover:opacity-100 transition-opacity brightness-0 invert" title="Oracle" alt="Oracle" />
+                <img src="https://cdn.simpleicons.org/postgresql/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="PostgreSQL" />
+                <img src="https://cdn.simpleicons.org/mysql/white" className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity" title="MySQL" />
+                {/* Replaced failing SQL Server CDN with local image + blend mode */}
+                <img src={sqlserverLogo} className="h-10 w-10 opacity-90 hover:opacity-100 transition-opacity mix-blend-screen" title="SQL Server" alt="SQL Server" />
+                {/* Replaced failing Oracle CDN with local image + filter */}
+                <img src={oracleLogo} className="h-5 w-auto opacity-90 hover:opacity-100 transition-opacity brightness-0 invert" title="Oracle" alt="Oracle" />
               </div>
               <ul className="space-y-2 text-gray-300">
                 {skillText.databaseList.map((item) => (
@@ -1176,7 +1205,7 @@ export default function Home({ targetSection, language }: HomeProps) {
             <div className="bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="flex items-center gap-4 mb-8">
                 <div className="bg-white p-2 rounded">
-                    <img src={totvsLogo} className="h-6 w-auto" alt="TOTVS" />
+                  <img src={totvsLogo} className="h-6 w-auto" alt="TOTVS" />
                 </div>
                 <h3 className="text-2xl font-bold">{skillText.totvsTitle}</h3>
               </div>
@@ -1188,7 +1217,7 @@ export default function Home({ targetSection, language }: HomeProps) {
             </div>
 
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 7. PROJETOS */}
@@ -1253,13 +1282,31 @@ export default function Home({ targetSection, language }: HomeProps) {
         <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Briefcase className="h-4 w-4" /> {t.experienceFloat}
         </div>
+
+        {/* Tech Float Card - SQL Server (Distributed) */}
+        <div className="absolute top-32 right-4 md:right-20 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3500ms] delay-700 z-40">
+          <img src={sqlserverLogo} className="w-8 h-8 md:w-12 md:h-12 object-contain" alt="SQL Server" />
+        </div>
         <div className="container px-6 mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-2 text-center">{t.experienceTitle}</h2>
           <p className="text-muted-foreground text-center mb-12">{t.experienceSubtitle}</p>
-          
-          <div className="space-y-12">
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, staggerChildren: 0.1 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
             {experiences.map((job, idx) => (
-              <div key={idx} className="relative pl-8 border-l-2 border-border pb-8 last:pb-0">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="relative pl-8 border-l-2 border-border pb-8 last:pb-0"
+              >
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary" />
                 <div className="mb-2 flex flex-col md:flex-row md:items-center md:justify-between">
                   <h3 className="text-2xl font-bold text-foreground">{job.role[language]}</h3>
@@ -1274,9 +1321,9 @@ export default function Home({ targetSection, language }: HomeProps) {
                 <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
                   {job.desc[language].map((p, i) => <p key={i}>{p}</p>)}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1421,16 +1468,16 @@ export default function Home({ targetSection, language }: HomeProps) {
               </Card>
             ))}
           </div>
-          
+
           <div className="mt-12 p-6 bg-primary/10 rounded-xl border border-primary/20 text-center">
-             <h3 className="text-xl font-bold mb-4 flex items-center justify-center gap-2">
-               <BookOpen className="w-6 h-6" /> {t.languagesTitle}
-             </h3>
-             <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-lg">
-                {t.languages.map((lang) => (
-                  <span key={lang}>{lang}</span>
-                ))}
-             </div>
+            <h3 className="text-xl font-bold mb-4 flex items-center justify-center gap-2">
+              <BookOpen className="w-6 h-6" /> {t.languagesTitle}
+            </h3>
+            <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-lg">
+              {t.languages.map((lang) => (
+                <span key={lang}>{lang}</span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
