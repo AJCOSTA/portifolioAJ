@@ -992,7 +992,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         </div>
 
         {/* Tech Badges - Design premium com efeito de vidro */}
-        <div className="absolute left-6 top-24 hidden md:block z-20">
+        <div className="absolute left-4 top-20 hidden xl:block z-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1003,7 +1003,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           </motion.div>
         </div>
 
-        <div className="absolute right-6 top-24 hidden md:block z-20">
+        <div className="absolute right-4 top-20 hidden xl:block z-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1071,8 +1071,8 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Tech Float Card - Python (Top Right) */}
-            <div className="absolute -top-6 -right-2 md:top-10 md:-right-24 bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3000ms] z-20">
+            {/* Tech Float Card - Python (Bottom Right) */}
+            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3000ms] z-20">
               <img src="https://cdn.simpleicons.org/python/3776AB" className="w-8 h-8 md:w-10 md:h-10" alt="Python" />
             </div>
 
