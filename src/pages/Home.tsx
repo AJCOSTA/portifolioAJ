@@ -1,14 +1,41 @@
 import { useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
-  Terminal, Server, Database, Code2, LayoutTemplate, Cpu, Users,
-  Briefcase, GraduationCap, Mail, Linkedin, Github, ExternalLink,
-  CheckCircle2, Building2, MapPin, Calendar, Award, BookOpen, Target,
-  Phone, Sparkles, Cloud, BarChart3, Layers, LineChart, ShieldCheck,
-  Lock, Globe2, Rocket
+  Terminal,
+  Code2,
+  Database,
+  Sparkles,
+  Globe2,
+  Laptop,
+  GraduationCap,
+  BookOpen,
+  Target,
+  Github,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Server,
+  Cpu,
+  Briefcase,
+  Cloud,
+  ShieldCheck,
+  LayoutTemplate,
+  BarChart3,
+  Layers,
+  LineChart,
+  Rocket,
+  Users,
+  Award,
+  CheckCircle2,
+  Building2,
+  MapPin,
+  ExternalLink,
+  Lock,
+  Phone
 } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import totvsLogo from "@/assets/totvs-logo.png";
@@ -680,7 +707,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       },
     },
     {
-      icon: Phone,
+      icon: MessageSquare,
       title: { pt: "Android Intermediário", en: "Intermediate Android" },
       provider: "TreinaWeb",
       focus: {
@@ -930,10 +957,10 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
     },
     {
       icon: Phone,
-      label: { pt: "Telefone", en: "Phone" },
+      label: { pt: "WhatsApp", en: "WhatsApp" },
       value: "+55 (99) 98130-4000",
-      href: "tel:+5599981304000",
-      accent: "from-sky-500/20 via-sky-500/10",
+      href: "https://wa.me/5599981304000",
+      accent: "from-green-500/20 via-green-500/10",
     },
   ];
 
@@ -946,27 +973,27 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         {/* Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.01] pointer-events-none" />
-        
+
         {/* Subtle Professional Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Gradiente sutil no topo */}
           <div className="absolute top-0 inset-x-0 h-64 bg-linear-to-b from-blue-500/3 to-transparent" />
-          
+
           {/* Elementos decorativos mais sutis */}
           <div className="absolute -top-20 left-1/4 w-64 h-64 bg-blue-500/2 rounded-full blur-3xl" />
           <div className="absolute top-40 right-1/4 w-56 h-56 bg-indigo-500/2 rounded-full blur-3xl" />
-          
+
           {/* Linha decorativa superior */}
           <div className="absolute top-32 left-0 right-0 h-px bg-primary/3" />
-          
+
           {/* Linhas decorativas laterais */}
           <div className="absolute top-0 bottom-0 left-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
           <div className="absolute top-0 bottom-0 right-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
         </div>
-        
+
         {/* Tech Badges - Design premium com efeito de vidro */}
         <div className="absolute left-6 top-24 hidden md:block z-20">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -975,9 +1002,9 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             <Sparkles className="h-4 w-4 text-primary" /> {t.heroFloatLeft}
           </motion.div>
         </div>
-        
+
         <div className="absolute right-6 top-24 hidden md:block z-20">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -986,7 +1013,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             <Globe2 className="h-4 w-4 text-primary" /> {t.heroFloatRight}
           </motion.div>
         </div>
-        
+
         <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -999,7 +1026,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                 <Terminal className="mr-2 h-4 w-4" />
                 {t.heroBadge}
               </div>
-              
+
               <div className="flex flex-wrap items-center gap-2 mt-1">
                 <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">13+ anos</span>
                 <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">SaaS & APIs</span>
@@ -1013,10 +1040,19 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
               {t.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="rounded-md px-8 font-semibold bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button
+                size="lg"
+                className="rounded-md px-8 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 {t.heroCtaPrimary}
               </Button>
-              <Button size="lg" variant="outline" className="rounded-md px-8" onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-md px-8 border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300 hover:scale-105"
+                onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 {t.heroCtaSecondary}
               </Button>
             </div>
@@ -1076,11 +1112,11 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             delay: 2,
           }}
         />
-        
+
         <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold text-primary z-50">
           <Sparkles className="h-4 w-4" /> {t.aboutFloat}
         </div>
-        
+
         {/* Floating Tech Icons */}
         <motion.div
           className="absolute top-20 right-20 text-primary/10"
@@ -1096,7 +1132,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         >
           <Database className="w-12 h-12" />
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1110,8 +1146,8 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           </div>
           <div className="prose prose-lg dark:prose-invert mx-auto text-muted-foreground leading-relaxed text-justify">
             {t.aboutParagraphs.map((paragraph, index) => (
-              <motion.p 
-                key={index} 
+              <motion.p
+                key={index}
                 className={index === 0 ? "mb-6" : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1167,9 +1203,11 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {profileHighlights.map((item) => (
-                <Card key={item.label.pt} className="bg-card hover:shadow-md transition-all">
+                <Card key={item.label.pt} className="bg-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-2 hover:border-primary/30">
                   <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                    <item.icon className="w-10 h-10 text-primary" />
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="w-10 h-10 text-primary" />
+                    </div>
                     <span className="font-semibold">{item.label[language]}</span>
                   </CardContent>
                 </Card>
@@ -1188,10 +1226,19 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           <h2 className="text-3xl font-bold mb-12 text-center">{t.qualitiesTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.qualitiesList.map((quality, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-background rounded-lg border border-border">
-                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
-                <p className="font-medium">{quality}</p>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="group flex items-start gap-4 p-5 bg-background rounded-xl border-2 border-border hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                </div>
+                <p className="font-medium text-sm">{quality}</p>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -1209,15 +1256,25 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           <h2 className="text-3xl font-bold mb-12 text-center">{t.areasTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {areas.map((area, idx) => (
-              <Card key={idx} className="hover:border-primary transition-colors">
-                <CardHeader>
-                  <area.icon className="w-10 h-10 text-primary mb-2" />
-                  <CardTitle className="text-lg">{area.title[language]}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{area.desc[language]}</p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-2 group">
+                  <CardHeader>
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors w-fit mb-2">
+                      <area.icon className="w-10 h-10 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg">{area.title[language]}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm">{area.desc[language]}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -1230,7 +1287,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         </div>
 
         {/* Tech Float Card - Oracle (Distributed) */}
-        <div className="absolute bottom-20 left-4 md:left-10 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[4000ms] z-40">
+        <div className="absolute bottom-20 left-4 md:left-10 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-4000 z-40">
           <img src={oracleLogo} className="w-12 h-auto md:w-16" alt="Oracle" />
         </div>
         <motion.div
@@ -1346,7 +1403,9 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                      <project.icon className="w-6 h-6" />
+                      <div className="w-6 h-6 flex items-center justify-center">
+                        {React.createElement(project.icon as any, { className: "w-6 h-6" })}
+                      </div>
                     </div>
                     <div>
                       <CardTitle className="text-xl">{project.title[language]}</CardTitle>
@@ -1389,7 +1448,7 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
         </div>
 
         {/* Tech Float Card - SQL Server (Distributed) */}
-        <div className="absolute top-32 right-4 md:right-20 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3500ms] delay-700 z-40">
+        <div className="absolute top-32 right-4 md:right-20 hidden md:block bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-3500 delay-700 z-40">
           <img src={sqlserverLogo} className="w-8 h-8 md:w-12 md:h-12 object-contain" alt="SQL Server" />
         </div>
         <div className="container px-6 mx-auto max-w-5xl">
@@ -1619,15 +1678,16 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                 key={item.label.pt}
                 type="button"
                 onClick={() => window.open(item.href, "_blank")}
-                className={`group rounded-2xl border border-white/10 bg-linear-to-br ${item.accent} to-transparent p-4 text-left transition hover:-translate-y-1 hover:border-white/30`}
+                className={`group rounded-2xl border-2 border-white/20 bg-gradient-to-br ${item.accent} to-transparent p-6 text-left transition-all duration-300 hover:-translate-y-2 hover:border-white/50 hover:shadow-xl hover:shadow-blue-500/20 relative overflow-hidden`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                    <item.icon className="h-5 w-5 text-white" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 flex flex-col gap-3">
+                  <div className="h-12 w-12 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                    <item.icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-white/60">{item.label[language]}</p>
-                    <p className="font-semibold text-white">{item.value}</p>
+                    <p className="text-xs text-white/60 mb-1 uppercase tracking-wider font-semibold">{item.label[language]}</p>
+                    <p className="font-semibold text-white text-sm">{item.value}</p>
                   </div>
                 </div>
               </button>
