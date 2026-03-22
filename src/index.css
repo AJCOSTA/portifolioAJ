@@ -47,17 +47,17 @@
 }
 
 :root {
-  /* Design "Executive Tech" */
-  /* Sobriety, Trust, Scale, Modernity */
+  /* Design "Executive Tech Premium" */
+  /* Sobriety, Trust, Scale, Modernity, Apple-like */
 
-  --radius: 0.5rem;
-  /* 8px - Cleaner, less rounded than "playful" styles */
+  --radius: 0.75rem;
+  /* 12px - Modern, clean, proportional */
 
-  /* Light Theme (Executive Default) - Slate/Gray/Blue */
-  --background: oklch(0.985 0.002 240);
-  /* Off-white, slightly cool */
-  --foreground: oklch(0.15 0.02 260);
-  /* Deep slate, high contrast */
+  /* Light Theme (Executive Default) */
+  --background: oklch(0.99 0 0);
+  /* Very clean studio white */
+  --foreground: oklch(0.12 0.01 260);
+  /* Deep slate, high contrast typography */
 
   --card: oklch(1 0 0);
   /* Pure white */

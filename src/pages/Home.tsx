@@ -35,7 +35,8 @@ import {
   MapPin,
   ExternalLink,
   Lock,
-  Phone
+  Phone,
+  ArrowRight
 } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import totvsLogo from "@/assets/totvs-logo.png";
@@ -43,6 +44,7 @@ import awsLogo from "@/assets/aws-logo.png";
 import oracleLogo from "@/assets/oracle-logo.png";
 import sqlserverLogo from "@/assets/sqlserver-logo.png";
 import { motion } from "framer-motion";
+import { useVisitorTracking } from "@/hooks/useVisitorTracking";
 
 interface HomeProps {
   targetSection?: string;
@@ -55,6 +57,9 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       document.getElementById(targetSection)?.scrollIntoView({ behavior: "smooth" });
     }
   }, [targetSection]);
+
+  // Registra as visitas
+  useVisitorTracking("/");
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -968,89 +973,70 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
     <div className="min-h-screen bg-background text-foreground font-sans relative">
       <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_55%)]" />
 
-      {/* 1. HERO SECTION */}
-      <section id="home" className="pt-16 pb-16 md:pt-28 md:pb-28 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.01] pointer-events-none" />
-
-        {/* Subtle Professional Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Gradiente sutil no topo */}
-          <div className="absolute top-0 inset-x-0 h-64 bg-linear-to-b from-blue-500/3 to-transparent" />
-
-          {/* Elementos decorativos mais sutis */}
-          <div className="absolute -top-20 left-1/4 w-64 h-64 bg-blue-500/2 rounded-full blur-3xl" />
-          <div className="absolute top-40 right-1/4 w-56 h-56 bg-indigo-500/2 rounded-full blur-3xl" />
-
-          {/* Linha decorativa superior */}
-          <div className="absolute top-32 left-0 right-0 h-px bg-primary/3" />
-
-          {/* Linhas decorativas laterais */}
-          <div className="absolute top-0 bottom-0 left-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
-          <div className="absolute top-0 bottom-0 right-12 w-px bg-linear-to-b from-transparent via-primary/3 to-transparent hidden lg:block" />
-        </div>
-
-        {/* Tech Badges - Design premium com efeito de vidro */}
-        <div className="absolute left-4 top-20 hidden xl:block z-20">
+      {/* 1. HERO SECTION - ULTRA PREMIUM LAYOUT */}
+      <section id="home" className="pt-24 pb-20 md:pt-36 md:pb-32 relative flex items-center min-h-[90vh]">
+        {/* Deep Background Elements for Professional Look */}
+        <div className="absolute inset-0 bg-[#030712] dark:bg-background pointer-events-none transition-colors duration-500" />
+        
+        {/* Subtle grid pattern for "dev" feel, very low opacity */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] pointer-events-none mix-blend-overlay" />
+        
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        
+        <div className="container px-6 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center relative z-10">
+          
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ scale: 1.05, y: -2 }}
-            className="flex items-center gap-2 rounded-full border border-primary/30 bg-white/95 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur-md hover:border-primary/50 transition-all duration-300">
-            <Sparkles className="h-4 w-4 text-primary" /> {t.heroFloatLeft}
-          </motion.div>
-        </div>
-
-        <div className="absolute right-4 top-20 hidden xl:block z-20">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.05, y: -2 }}
-            className="flex items-center gap-2 rounded-full border border-primary/30 bg-white/95 px-4 py-2 text-xs font-semibold text-primary shadow-lg backdrop-blur-md hover:border-primary/50 transition-all duration-300">
-            <Globe2 className="h-4 w-4 text-primary" /> {t.heroFloatRight}
-          </motion.div>
-        </div>
-
-        <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col space-y-8"
           >
-            <div className="flex flex-col gap-3">
-              <div className="inline-flex items-center self-start rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary shadow-sm">
-                <Terminal className="mr-2 h-4 w-4" />
+            {/* Status Badge */}
+            <div className="flex items-center gap-3">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary shadow-sm backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
                 {t.heroBadge}
               </div>
-
-              <div className="flex flex-wrap items-center gap-2 mt-1">
-                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">13+ anos</span>
-                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">SaaS & APIs</span>
-                <span className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80 shadow-sm">Cloud & DevOps</span>
-              </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              {t.heroTitlePrefix} <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-700 via-indigo-600 to-blue-700 animate-gradient-x pb-2">{t.heroTitleHighlight}</span> {t.heroTitleSuffix}
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-              {t.heroSubtitle}
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4">
+
+            {/* Typography */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+                {t.heroTitlePrefix} <br className="hidden md:block" />
+                <span className="bg-clip-text text-transparent bg-gradient-to-br from-primary via-blue-400 to-indigo-600">
+                  {t.heroTitleHighlight}
+                </span>{" "}
+                {t.heroTitleSuffix}
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl font-medium">
+                {t.heroSubtitle}
+              </p>
+            </div>
+
+            {/* Tag Pills */}
+            <div className="flex flex-wrap items-center gap-3">
+              {["13+ anos de exp.", "SaaS & APIs", "Cloud & DevOps"].map((tag, i) => (
+                <div key={i} className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/40 backdrop-blur-sm px-3 py-2 text-xs font-semibold text-foreground/80 shadow-sm">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
+                  {tag}
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="rounded-md px-8 font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                className="h-14 px-8 rounded-xl font-semibold bg-primary text-primary-foreground shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.7)] transition-all duration-300 hover:-translate-y-1 text-base"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {t.heroCtaPrimary}
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-md px-8 border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300 hover:scale-105"
+                className="h-14 px-8 rounded-xl border-2 border-border/50 bg-background/50 backdrop-blur-md hover:bg-accent hover:border-accent-foreground/20 transition-all duration-300 hover:-translate-y-1 font-semibold text-base"
                 onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {t.heroCtaSecondary}
@@ -1059,24 +1045,41 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center md:justify-end relative"
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end relative"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
-              <img
-                src={profilePhoto}
-                alt="AJ Assunção Costa"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Tech Float Card - Python (Bottom Right) */}
-            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white dark:bg-slate-800 p-3 md:p-4 rounded-xl shadow-lg border border-border animate-bounce duration-[3000ms] z-20">
-              <img src="https://cdn.simpleicons.org/python/3776AB" className="w-8 h-8 md:w-10 md:h-10" alt="Python" />
-            </div>
+            {/* Extremely Professional Image Container */}
+            <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px]">
+              {/* Backglow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-indigo-600 rounded-[2.5rem] blur-3xl opacity-20 animate-pulse" />
+              
+              <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 dark:border-white/5 bg-card/20 backdrop-blur-md shadow-2xl z-10">
+                <img
+                  src={profilePhoto}
+                  alt="AJ Assunção Costa"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
 
-
+              {/* Floating Python Badge (Premium) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-12 bg-card/80 backdrop-blur-xl p-4 md:p-5 rounded-2xl shadow-2xl border border-white/10 z-20 flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center p-2 border border-white/5">
+                  <img src="https://cdn.simpleicons.org/python/3776AB" className="w-full h-full object-contain" alt="Python" />
+                </div>
+                <div className="hidden sm:block">
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Especialidade</p>
+                  <p className="text-sm font-bold text-foreground">Python & APIs</p>
+                </div>
+              </motion.div>
+              
+            </div>
           </motion.div>
         </div>
       </section>
