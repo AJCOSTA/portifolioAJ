@@ -20,6 +20,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('Overview');
   const [visits, setVisits] = useState<VisitData[]>([]);
   const [messages, setMessages] = useState<MessageData[]>([]);
+  const [selectedMessage, setSelectedMessage] = useState<MessageData | null>(null);
   useEffect(() => {
     // Auth Check
     if (sessionStorage.getItem('adminAuth') !== 'true') {
@@ -433,56 +434,114 @@ export default function AdminDashboard() {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                 <div>
                   <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Caixa de Entrada</h1>
-                  <p className="text-slate-500 mt-1 text-sm font-medium">Contatos recebidos pela plataforma oficial.</p>
+                  <p className="text-slate-500 mt-1 text-sm font-medium">Contatos e propostas recebidas.</p>
                 </div>
                 
-                <Card className="bg-white border-slate-200 shadow-xl shadow-slate-200/50 rounded-[32px] overflow-hidden">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left">
-                      <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold text-[10px] tracking-widest border-b border-slate-200">
-                        <tr>
-                          <th className="px-8 py-5">Remetente / Lead</th>
-                          <th className="px-8 py-5">Mensagem</th>
-                          <th className="px-8 py-5">Data</th>
-                          <th className="px-8 py-5">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-slate-700">
-                        {messages.length === 0 ? (
+                {selectedMessage ? (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                     <Card className="bg-white border-slate-200 shadow-xl shadow-slate-200/50 rounded-[32px] overflow-hidden p-8">
+                        <button 
+                           onClick={() => setSelectedMessage(null)}
+                           className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-primary transition-colors mb-6"
+                        >
+                           <ArrowLeft className="w-4 h-4" /> Voltar para a lista
+                        </button>
+                        
+                        <div className="flex justify-between items-start mb-8">
+                           <div>
+                              <h2 className="text-2xl font-black text-slate-900">{selectedMessage.name}</h2>
+                              <p className="text-slate-500 font-medium">{selectedMessage.email}</p>
+                           </div>
+                           <div className="text-right">
+                              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{new Date(selectedMessage.created_at).toLocaleDateString('pt-BR')}</p>
+                              <p className="text-sm font-medium text-slate-500">{new Date(selectedMessage.created_at).toLocaleTimeString('pt-BR')}</p>
+                           </div>
+                        </div>
+
+                        <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-8 text-slate-700 leading-relaxed font-medium">
+                           {selectedMessage.message}
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                           <a 
+                             href={`mailto:${selectedMessage.email}?subject=Resposta: Contato pelo Portfólio&body=Olá ${selectedMessage.name},%0D%0A%0D%0ARecebi sua mensagem pelo meu portfólio:`}
+                             className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-primary text-white font-bold shadow-[0_10px_30px_-10px_rgba(59,130,246,0.6)] hover:shadow-[0_10px_40px_-5px_rgba(59,130,246,0.8)] hover:-translate-y-1 transition-all"
+                           >
+                             <Mail className="w-5 h-5 mr-3" /> Responder via Email
+                           </a>
+                           
+                           {!selectedMessage.read && (
+                             <button
+                               onClick={() => {
+                                  handleMarkAsRead(selectedMessage.id);
+                                  setSelectedMessage(null);
+                               }}
+                               className="h-12 px-6 rounded-xl border-2 border-slate-200 bg-white text-slate-500 font-bold hover:bg-slate-50 hover:text-slate-700 transition-colors"
+                             >
+                               Marcar Resolvido
+                             </button>
+                           )}
+                        </div>
+                     </Card>
+                  </motion.div>
+                ) : (
+                  <Card className="bg-white border-slate-200 shadow-xl shadow-slate-200/50 rounded-[32px] overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm text-left">
+                        <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold text-[10px] tracking-widest border-b border-slate-200">
                           <tr>
-                            <td colSpan={4} className="px-8 py-16 text-center text-slate-400 font-bold">
-                              Nenhuma mensagem na caixa de entrada.
-                            </td>
+                            <th className="px-8 py-5">Remetente / Lead</th>
+                            <th className="px-8 py-5">Resumo</th>
+                            <th className="px-8 py-5">Data</th>
+                            <th className="px-8 py-5">Ações</th>
                           </tr>
-                        ) : messages.map((m) => (
-                          <tr key={m.id} className="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
-                            <td className="px-8 py-5">
-                               <div className="font-bold text-slate-900">{m.name}</div>
-                               <div className="text-xs text-slate-500">{m.email}</div>
-                            </td>
-                            <td className="px-8 py-5 text-sm max-w-sm truncate text-slate-600 font-medium">
-                               {m.message}
-                            </td>
-                            <td className="px-8 py-5 font-semibold text-slate-500 text-xs">
-                              {new Date(m.created_at).toLocaleString('pt-BR')}
-                            </td>
-                            <td className="px-8 py-5">
-                              {m.read ? (
-                                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-slate-100 text-slate-500 uppercase">
-                                  Lida
-                                </span>
-                              ) : (
-                                <button onClick={() => handleMarkAsRead(m.id)} className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-blue-100/50 border border-blue-200 text-blue-700 uppercase hover:bg-blue-600 hover:text-white transition-colors cursor-pointer">
-                                  Marcar como Lida
+                        </thead>
+                        <tbody className="text-slate-700">
+                          {messages.length === 0 ? (
+                            <tr>
+                              <td colSpan={4} className="px-8 py-16 text-center text-slate-400 font-bold">
+                                Nenhuma mensagem na caixa de entrada.
+                              </td>
+                            </tr>
+                          ) : messages.map((m) => (
+                            <tr 
+                               key={m.id} 
+                               className={`border-b border-slate-100 hover:bg-slate-50/80 transition-colors cursor-pointer ${m.read ? 'opacity-60' : ''}`}
+                               onClick={() => setSelectedMessage(m)}
+                            >
+                              <td className="px-8 py-5">
+                                 <div className="flex items-center gap-3">
+                                   {!m.read && <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />}
+                                   <div>
+                                     <div className={`font-bold ${!m.read ? 'text-primary' : 'text-slate-900'}`}>{m.name}</div>
+                                     <div className="text-xs text-slate-500">{m.email}</div>
+                                   </div>
+                                 </div>
+                              </td>
+                              <td className="px-8 py-5 text-sm max-w-[200px] truncate text-slate-600 font-medium">
+                                 {m.message}
+                              </td>
+                              <td className="px-8 py-5 font-semibold text-slate-500 text-xs">
+                                {new Date(m.created_at).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                              </td>
+                              <td className="px-8 py-5" onClick={(e) => e.stopPropagation()}>
+                                <button
+                                  onClick={() => setSelectedMessage(m)}
+                                  className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+                                >
+                                  Abrir
                                 </button>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </Card>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </Card>
+                )}
               </motion.div>
             )}
 

@@ -57,9 +57,9 @@ create table messages (
 
 -- Habilitar leitura/escrita
 alter table messages enable row level security;
-create policy "Public message insert" on messages for insert with check (true);
-create policy "Anonymous read messages" on messages for select using (true);
-create policy "Anonymous update messages" on messages for update using (true);
+create policy "Public message insert" on messages for insert to anon, authenticated with check (true);
+create policy "Anonymous read messages" on messages for select to anon, authenticated using (true);
+create policy "Anonymous update messages" on messages for update to anon, authenticated using (true);
 ```
 
 ---
