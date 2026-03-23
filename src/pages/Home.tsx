@@ -43,7 +43,7 @@ import totvsLogo from "@/assets/totvs-logo.png";
 import awsLogo from "@/assets/aws-logo.png";
 import oracleLogo from "@/assets/oracle-logo.png";
 import sqlserverLogo from "@/assets/sqlserver-logo.png";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useVisitorTracking } from "@/hooks/useVisitorTracking";
 
 interface HomeProps {
@@ -111,30 +111,30 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       heroCtaSecondary: "Ver Experiência",
       heroFloatLeft: "",
       heroFloatRight: "APIs & Integrações",
-      aboutTitle: "Apresentação Profissional",
-      aboutFloat: "Fullstack & APIs",
+      aboutTitle: "Como Posso Acelerar o Seu Negócio?",
+      aboutFloat: "ROI & Escala",
       aboutParagraphs: [
-        "Desenvolvedor Python com mais de 13 anos de experiência na área de TI, atuo como Coordenador de TI e desenvolvedor fullstack, combinando habilidades técnicas avançadas com sólida experiência em gerenciamento de projetos e equipes. Especialista em APIs REST, Django, Django REST Framework, FastAPI e Flask para desenvolvimento de soluções escaláveis e robustas.",
-        "Minha expertise abrange desde o desenvolvimento de sistemas web e mobile até a gestão de infraestrutura, segurança da informação e administração do ERP TOTVS RM. Trabalho com ambientes Cloud Native, Docker e Git Flow, sempre aplicando práticas DevOps para automação e alta disponibilidade. Tenho conhecimento em machine learning e visão computacional (TensorFlow, PyTorch, OpenCV), ampliando o leque de soluções que posso oferecer.",
+        "Com mais de 13 anos de experiência combinando Engenharia de Software e Liderança de TI, meu foco não é apenas escrever código, mas arquitetar produtos digitais que reduzem custos operacionais, escalam sem atritos e geram retorno financeiro (ROI) real para sua operação.",
+        "Diferente de um desenvolvedor tradicional, atuar como Coordenador me deu a visibilidade do ciclo de vida completo de um produto corporativo: desenho de ecossistemas Cloud Native (AWS, Docker, DevOps), desenvolvimento de APIs em Python de alta concorrência e integrações de missão crítica."
       ],
-      profileTitle: "Perfil Profissional",
+      profileTitle: "O Perfil do Desenvolvedor que Resolve",
       profileParagraphs: [
-        "Profissional com sólida formação técnica e acadêmica, especialista em desenvolvimento Python, APIs REST, DevOps, Cloud e gestão de infraestrutura. Experiência comprovada na liderança de equipes multidisciplinares, coordenação de projetos de TIC e negociação com fornecedores.",
-        "Reconhecido pela capacidade de resolver problemas complexos, estruturar ambientes críticos, otimizar processos e promover inovação tecnológica com responsabilidade e governança.",
-        "Possui habilidades em liderança técnica, gestão de projetos, comunicação eficaz e resolução de problemas complexos. É um profissional proativo, com forte ética de trabalho e compromisso com a entrega de resultados de alta qualidade.",
+        "Minha premissa é clara: a tecnologia precisa servir ao negócio. Combinando forte base em Python, Arquitetura de Software e DevOps, eu assumo ownership total sobre projetos difíceis, evitando que o gargalo técnico desacelere as vendas ou operações da sua empresa.",
+        "Domínio absoluto em extrair dados complexos, refatorar legados monolíticos para microserviços e aplicar IA/Machine Learning (OpenCV, PyTorch) em cenários onde o mercado exige inovação agressiva.",
+        "Comunicação direta, gestão de fornecedores e liderança ágil me qualificam como a ponte perfeita entre os interesses da Diretoria e o código de fato rolando nos servidores."
       ],
-      qualitiesTitle: "Principais Qualidades",
-      qualitiesFloat: "Liderança & Impacto",
+      qualitiesTitle: "Diferenciais Corporativos",
+      qualitiesFloat: "Foco B2B",
       qualitiesList: [
-        "Liderança técnica e gestão de equipes de TI",
-        "Pensamento analítico e resolução de problemas",
-        "Visão estratégica de tecnologia aplicada ao negócio",
-        "Comunicação clara entre áreas técnicas e não técnicas",
-        "Capacidade de tomada de decisão em ambientes críticos",
-        "Organização, responsabilidade e foco em resultados",
-        "Facilidade em aprendizagem e adaptação tecnológica",
+        "Construção de arquiteturas preparadas para alta escala de acessos",
+        "Especialista em modernização de plataformas legadas e monolitos",
+        "Redução drástica de custos com Cloud (AWS, DigitalOCean) via práticas DevOps",
+        "Visão ponta-a-ponta: do banco de dados complexo (Oracle/Postgres) à integração frontend",
+        "Implementação severa de rotinas automatizadas e segurança",
+        "Habilidade superior de traduzir 'tecniquês' para as metas dos C-Levels",
+        "Entregas focadas no aumento imediato de eficiência do time do cliente",
       ],
-      areasTitle: "Áreas de Atuação",
+      areasTitle: "Soluções que Posso Desenvolver para Você",
       skillsTitle: "Habilidades Técnicas",
       skillsFloat: "DevOps",
       experienceTitle: "Experiência Profissional",
@@ -170,14 +170,14 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       certificationsSubtitle: "AWS, DevOps, Segurança e Arquitetura de Software.",
       languagesTitle: "Idiomas",
       languages: ["Português: Nativo", "Inglês: Intermediário"],
-      objectiveTitle: "Objetivo Profissional",
-      objectiveFloat: "Visão Estratégica",
+      objectiveTitle: "O Próximo Nível do Seu Software",
+      objectiveFloat: "Senioridade e Impacto",
       objectiveText:
-        "Atuar de forma estratégica como Desenvolvedor Python e Gestor de TI, aplicando conhecimento técnico e visão de negócio para criar soluções escaláveis, seguras e de alto impacto, promovendo eficiência operacional, inovação e crescimento sustentável das organizações.",
-      contactTitle: "Contato",
-      contactTag: "Disponível para projetos estratégicos",
+        "Buscando tirar sua plataforma do papel ou modernizar um legado problemático? Minha missão é entregar soluções robustas que não quebram na sexta-feira. Trabalhando comigo, projetamos eficiência técnica atrelada a resultados reais.",
+      contactTitle: "Vamos Iniciar Seu Projeto?",
+      contactTag: "Agenda Aberta para Consultoria / Freelance",
       contactSubtitle:
-        "Vamos conversar sobre liderança, arquitetura e soluções de alto impacto.",
+        "Precisa de um Consultor Python Sênior ou um Tech Lead? Deixe sua proposta abaixo ou acesse meus canais diretos. Eu retorno em menos de 24 horas.",
       contactFloat: "Canal direto",
       contactAvailability: "Disponível para projetos",
       contactLocation: "Caxias, Maranhão, Brasil",
@@ -1001,8 +1001,44 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
     },
   ];
 
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setShowStickyCTA(true);
+      } else {
+        setShowStickyCTA(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans relative">
+      <AnimatePresence>
+         {showStickyCTA && (
+            <motion.div 
+               initial={{ opacity: 0, y: 50, x: '-50%' }} 
+               animate={{ opacity: 1, y: 0, x: '-50%' }}
+               exit={{ opacity: 0, y: 50, x: '-50%' }}
+               className="fixed bottom-6 left-1/2 z-[100] w-max flex items-center justify-center"
+            >
+               <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-full shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] p-2 pr-6 flex items-center gap-4 group cursor-pointer hover:shadow-[0_20px_50px_-10px_rgba(59,130,246,0.4)] transition-all duration-300 hover:scale-105"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
+                     <Mail className="w-5 h-5 text-white animate-pulse" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest">{language === 'pt' ? 'Gostou do que viu?' : 'Open for work'}</h4>
+                    <p className="font-extrabold text-sm text-slate-900 dark:text-white transition-colors group-hover:text-primary">{language === 'pt' ? 'Iniciar um Projeto Agora' : 'Start a Project Now'}</p>
+                  </div>
+               </div>
+            </motion.div>
+         )}
+      </AnimatePresence>
+
       <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_55%)]" />
 
       {/* 1. HERO SECTION - ULTRA PREMIUM LAYOUT */}
@@ -1468,11 +1504,20 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                       </li>
                     ))}
                   </ul>
-                  <div className="text-sm text-muted-foreground">
-                    <strong>{language === "pt" ? "Tecnologias" : "Tech"}:</strong> {project.tech}
+                  <div className="text-sm text-muted-foreground border-y border-border/50 py-3">
+                    <strong>{language === "pt" ? "Stack (Ferramentas)" : "Tech"}:</strong> {project.tech}
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    <strong>{language === "pt" ? "Resultado" : "Outcome"}:</strong> {project.result[language]}
+                  <div className="text-sm text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/30 p-3 rounded-lg">
+                    <strong>{language === "pt" ? "Impacto de Negócio" : "Business Outcome"}:</strong> {project.result[language]}
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                     <button
+                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+                        className="w-full h-11 rounded-lg bg-primary/10 text-primary font-bold text-sm tracking-wide hover:bg-primary hover:text-white transition-all duration-300"
+                     >
+                       {language === 'pt' ? 'Precisa de um projeto similar?' : 'Need a similar project?'}
+                     </button>
                   </div>
                 </CardContent>
               </Card>
