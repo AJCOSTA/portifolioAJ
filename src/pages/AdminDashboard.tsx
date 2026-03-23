@@ -2,15 +2,24 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import { Users, Eye, ArrowLeft, LogOut, Clock, Smartphone, LayoutDashboard, Settings, Activity, Globe, ChevronRight, Monitor } from 'lucide-react';
+import { Users, Eye, ArrowLeft, LogOut, Clock, Smartphone, LayoutDashboard, Settings, Activity, Globe, ChevronRight, Monitor, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { VisitData } from '@/hooks/useVisitorTracking';
+
+export interface MessageData {
+  id: number;
+  name: string;
+  email: string;
+  message: string;
+  read: boolean;
+  created_at: string;
+}
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('Overview');
   const [visits, setVisits] = useState<VisitData[]>([]);
-
+  const [messages, setMessages] = useState<MessageData[]>([]);
   useEffect(() => {
     // Auth Check
     if (sessionStorage.getItem('adminAuth') !== 'true') {
@@ -24,12 +33,12 @@ export default function AdminDashboard() {
         try {
           // Import dinâmico do cliente para usar dentro do hook
           const { supabase } = await import('@/lib/supabase');
+          // Fetch mensagens se a tab Messages for acionada ou só carregar num refetch 
           if (supabase) {
-            const { data, error } = await supabase.from('visits').select('*').order('created_at', { ascending: true });
+            const { data: visitsData, error: visitsError } = await supabase.from('visits').select('*').order('created_at', { ascending: true });
             
-            if (!error && data) {
-              // Mapping back from snake_case to VisitData format
-              const mappedVisits = data.map(v => ({
+            if (!visitsError && visitsData) {
+              const mappedVisits = visitsData.map(v => ({
                 id: v.id,
                 page: v.page,
                 timestamp: v.created_at || v.timestamp,
@@ -38,8 +47,11 @@ export default function AdminDashboard() {
                 platform: v.platform
               }));
               setVisits(mappedVisits);
-              return;
             }
+
+            const { data: msgsData } = await supabase.from('messages').select('*').order('created_at', { ascending: false });
+            if (msgsData) setMessages(msgsData as MessageData[]);
+            return;
           }
         } catch (e) {
           console.error("Erro ao buscar Supabase:", e);
@@ -57,6 +69,16 @@ export default function AdminDashboard() {
 
     fetchVisits();
   }, [setLocation]);
+
+  const handleMarkAsRead = async (id: number) => {
+    try {
+      const { supabase } = await import('@/lib/supabase');
+      if (supabase) {
+        await supabase.from('messages').update({ read: true }).eq('id', id);
+        setMessages(msgs => msgs.map(m => m.id === id ? { ...m, read: true } : m));
+      }
+    } catch(e) { console.error(e) }
+  };
 
   const handleLogout = () => {
     sessionStorage.removeItem('adminAuth');
@@ -138,6 +160,7 @@ export default function AdminDashboard() {
           <NavItem icon={LayoutDashboard} label="Overview" active={activeTab === 'Overview'} />
           <NavItem icon={Globe} label="Tráfego" active={activeTab === 'Tráfego'} />
           <NavItem icon={Users} label="Audiência" active={activeTab === 'Audiência'} />
+          <NavItem icon={Mail} label="Mensagens" active={activeTab === 'Mensagens'} />
           
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 px-4 mt-8">Sistema</div>
           <NavItem icon={Settings} label="Ajustes" active={activeTab === 'Ajustes'} />
@@ -406,6 +429,63 @@ export default function AdminDashboard() {
               </motion.div>
             )}
             
+            {activeTab === 'Mensagens' && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+                <div>
+                  <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Caixa de Entrada</h1>
+                  <p className="text-slate-500 mt-1 text-sm font-medium">Contatos recebidos pela plataforma oficial.</p>
+                </div>
+                
+                <Card className="bg-white border-slate-200 shadow-xl shadow-slate-200/50 rounded-[32px] overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left">
+                      <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold text-[10px] tracking-widest border-b border-slate-200">
+                        <tr>
+                          <th className="px-8 py-5">Remetente / Lead</th>
+                          <th className="px-8 py-5">Mensagem</th>
+                          <th className="px-8 py-5">Data</th>
+                          <th className="px-8 py-5">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-slate-700">
+                        {messages.length === 0 ? (
+                          <tr>
+                            <td colSpan={4} className="px-8 py-16 text-center text-slate-400 font-bold">
+                              Nenhuma mensagem na caixa de entrada.
+                            </td>
+                          </tr>
+                        ) : messages.map((m) => (
+                          <tr key={m.id} className="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
+                            <td className="px-8 py-5">
+                               <div className="font-bold text-slate-900">{m.name}</div>
+                               <div className="text-xs text-slate-500">{m.email}</div>
+                            </td>
+                            <td className="px-8 py-5 text-sm max-w-sm truncate text-slate-600 font-medium">
+                               {m.message}
+                            </td>
+                            <td className="px-8 py-5 font-semibold text-slate-500 text-xs">
+                              {new Date(m.created_at).toLocaleString('pt-BR')}
+                            </td>
+                            <td className="px-8 py-5">
+                              {m.read ? (
+                                <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-slate-100 text-slate-500 uppercase">
+                                  Lida
+                                </span>
+                              ) : (
+                                <button onClick={() => handleMarkAsRead(m.id)} className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-blue-100/50 border border-blue-200 text-blue-700 uppercase hover:bg-blue-600 hover:text-white transition-colors cursor-pointer">
+                                  Marcar como Lida
+                                </button>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </Card>
+              </motion.div>
+            )}
+
             {activeTab === 'Ajustes' && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                 <div>

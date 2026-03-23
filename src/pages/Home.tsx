@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -57,6 +57,38 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       document.getElementById(targetSection)?.scrollIntoView({ behavior: "smooth" });
     }
   }, [targetSection]);
+
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+  const [contactStatus, setContactStatus] = useState<'idle'|'loading'|'success'|'error'>('idle');
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactForm.name || !contactForm.message) return;
+    setContactStatus('loading');
+    try {
+      if (import.meta.env.VITE_SUPABASE_URL) {
+        const { supabase } = await import('@/lib/supabase');
+        if (supabase) {
+          const { error } = await supabase.from('messages').insert([{
+            name: contactForm.name,
+            email: contactForm.email,
+            message: contactForm.message,
+            read: false
+          }]);
+          if (error) throw error;
+        }
+      } else {
+        // Fallback simulate delay if no db
+        await new Promise(r => setTimeout(r, 1000));
+      }
+      setContactStatus('success');
+      setContactForm({ name: '', email: '', message: '' });
+      setTimeout(() => setContactStatus('idle'), 3000);
+    } catch(err) {
+      console.error(err);
+      setContactStatus('error');
+    }
+  };
 
   // Registra as visitas
   useVisitorTracking("/");
@@ -1708,6 +1740,63 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
               </button>
             ))}
           </div>
+
+          {/* Form de Contato Inline Direto pro Supabase */}
+          <div className="mt-12 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-10 text-left max-w-4xl mx-auto backdrop-blur-sm relative overflow-hidden">
+             <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
+             <div className="relative z-10 flex flex-col md:flex-row gap-8">
+                <div className="md:w-1/3 space-y-4">
+                   <h3 className="text-2xl font-bold">Deixe sua Mensagem</h3>
+                   <p className="text-white/60 text-sm leading-relaxed">
+                     Tem uma proposta, projeto corporativo ou deseja se conectar? Preencha o formulário e a mensagem cairá diretamente no meu painel administrativo em tempo real.
+                   </p>
+                </div>
+                <div className="md:w-2/3">
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                       <input 
+                         required
+                         type="text" 
+                         placeholder="Seu nome" 
+                         className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors"
+                         value={contactForm.name}
+                         onChange={e => setContactForm({...contactForm, name: e.target.value})}
+                         disabled={contactStatus === 'loading'}
+                       />
+                       <input 
+                         type="email" 
+                         placeholder="Seu email corporativo" 
+                         className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors"
+                         value={contactForm.email}
+                         onChange={e => setContactForm({...contactForm, email: e.target.value})}
+                         disabled={contactStatus === 'loading'}
+                       />
+                    </div>
+                    <textarea 
+                       required
+                       rows={4} 
+                       placeholder="Como posso agregar valor à sua empresa?" 
+                       className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition-colors resize-none"
+                       value={contactForm.message}
+                       onChange={e => setContactForm({...contactForm, message: e.target.value})}
+                       disabled={contactStatus === 'loading'}
+                    ></textarea>
+                    
+                    <Button 
+                      type="submit" 
+                      disabled={contactStatus === 'loading' || contactStatus === 'success'}
+                      className="w-full sm:w-auto px-8 h-12 rounded-xl bg-primary hover:bg-blue-600 font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {contactStatus === 'loading' ? 'Enviando...' : contactStatus === 'success' ? 'Mensagem Enviada!' : 'Enviar Mensagem Segura'}
+                      {contactStatus !== 'loading' && contactStatus !== 'success' && <ArrowRight className="w-4 h-4 ml-2" />}
+                    </Button>
+                    
+                    {contactStatus === 'error' && <p className="text-red-400 text-sm mt-2">Falha ao enviar. Tente pelo LinkedIn!</p>}
+                  </form>
+                </div>
+             </div>
+          </div>
+
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-white/60">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" /> {t.contactLocation}

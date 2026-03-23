@@ -42,6 +42,26 @@ create policy "Public visits insert" on visits for insert with check (true);
 create policy "Anonymous read access" on visits for select using (true);
 ```
 
+## Passo 3: Configurar a Caixa de Mensagens (V2)
+Eu criei uma funcionalidade no Portfólio onde visitantes podem te enviar mensagens e propostas que vão cair diretamente na sua nova Tela de Mensagens no `/admin`. Para isso funcionar, rode esta tabela no SQL:
+
+```sql
+create table messages (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  email text,
+  message text not null,
+  read boolean default false,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Habilitar leitura/escrita
+alter table messages enable row level security;
+create policy "Public message insert" on messages for insert with check (true);
+create policy "Anonymous read messages" on messages for select using (true);
+create policy "Anonymous update messages" on messages for update using (true);
+```
+
 ---
 
 ## O Novo Layout: Light / White Premium
