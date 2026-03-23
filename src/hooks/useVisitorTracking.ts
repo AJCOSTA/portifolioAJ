@@ -38,7 +38,7 @@ export const useVisitorTracking = (pagePath: string) => {
       };
 
       // Tenta enviar para o Supabase (se as chaves existirem no ambiente)
-      if (import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY) {
+      if (supabase && import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY) {
         try {
           await supabase.from('visits').insert([{
             page: newVisit.page,

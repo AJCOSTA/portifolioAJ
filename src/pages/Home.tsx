@@ -974,14 +974,17 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
       <div className="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_55%)]" />
 
       {/* 1. HERO SECTION - ULTRA PREMIUM LAYOUT */}
-      <section id="home" className="pt-24 pb-20 md:pt-36 md:pb-32 relative flex items-center min-h-[90vh]">
-        {/* Deep Background Elements for Professional Look */}
-        <div className="absolute inset-0 bg-[#030712] dark:bg-background pointer-events-none transition-colors duration-500" />
+      <section id="home" className="pt-24 pb-20 md:pt-36 md:pb-32 relative flex items-center min-h-[90vh] overflow-hidden">
+        {/* Dynamic Premium Mesh Gradient Background */}
+        <div className="absolute inset-0 bg-background pointer-events-none transition-colors duration-500" />
+        <div className="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-primary/30 via-indigo-500/20 to-transparent blur-[120px] mix-blend-screen pointer-events-none animate-pulse duration-[8000ms]" />
+        <div className="absolute top-[20%] -right-[20%] w-[60%] h-[60%] rounded-full bg-gradient-to-bl from-blue-500/20 via-purple-500/20 to-transparent blur-[120px] mix-blend-screen pointer-events-none animate-pulse duration-[12000ms]" />
         
-        {/* Subtle grid pattern for "dev" feel, very low opacity */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] pointer-events-none mix-blend-overlay" />
+        {/* Subtle grid pattern for "dev" feel */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         
         <div className="container px-6 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center relative z-10">
           
@@ -1050,20 +1053,24 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             className="flex justify-center lg:justify-end relative"
           >
-            {/* Extremely Professional Image Container */}
-            <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px]">
-              {/* Backglow */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-indigo-600 rounded-[2.5rem] blur-3xl opacity-20 animate-pulse" />
-              
-              <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 dark:border-white/5 bg-card/20 backdrop-blur-md shadow-2xl z-10">
-                <img
-                  src={profilePhoto}
-                  alt="AJ Assunção Costa"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px] group perspective-[1000px]">
+                {/* Backglow Rotating */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-tr from-primary via-blue-500 to-indigo-600 rounded-[3rem] blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-700" 
                 />
-              </div>
+                
+                <div className="relative w-full h-full rounded-[3rem] overflow-hidden border border-white/20 dark:border-white/10 bg-card/20 backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.3)] z-10 transition-transform duration-700 group-hover:rotate-y-12">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <img
+                    src={profilePhoto}
+                    alt="AJ Assunção Costa"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
 
-              {/* Floating Python Badge (Premium) */}
+                {/* Floating Python Badge (Premium) */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -1206,10 +1213,11 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {profileHighlights.map((item) => (
-                <Card key={item.label.pt} className="bg-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-2 hover:border-primary/30">
-                  <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-10 h-10 text-primary" />
+                <Card key={item.label.pt} className="bg-card/40 backdrop-blur-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] hover:-translate-y-1 transition-all duration-300 border border-white/10 dark:border-white/5 group relative overflow-hidden text-card-foreground">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardContent className="p-6 flex flex-col items-center text-center gap-4 relative z-10">
+                    <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors shadow-inner border border-primary/10">
+                      <item.icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <span className="font-semibold">{item.label[language]}</span>
                   </CardContent>
@@ -1402,10 +1410,11 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
-              <Card key={idx} className="bg-background/80 border-border shadow-sm hover:shadow-md transition-shadow">
-                <CardHeader>
+              <Card key={idx} className="bg-card/40 backdrop-blur-lg border border-white/10 dark:border-white/5 shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardHeader className="relative z-10">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                    <div className="p-3 rounded-2xl bg-primary/10 text-primary shadow-inner border border-primary/20 group-hover:scale-110 transition-transform duration-300">
                       <div className="w-6 h-6 flex items-center justify-center">
                         {React.createElement(project.icon as any, { className: "w-6 h-6" })}
                       </div>
@@ -1472,20 +1481,23 @@ export default function Home({ targetSection, language = "pt" }: HomeProps) {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="relative pl-8 border-l-2 border-border pb-8 last:pb-0"
+                className="relative pl-8 md:pl-10 border-l-[3px] border-primary/20 pb-12 last:pb-0 hover:border-primary/60 transition-colors duration-500 group"
               >
-                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary" />
-                <div className="mb-2 flex flex-col md:flex-row md:items-center md:justify-between">
-                  <h3 className="text-2xl font-bold text-foreground">{job.role[language]}</h3>
-                  <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mt-2 md:mt-0">
+                <div className="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-background border-4 border-primary shadow-[0_0_15px_rgba(59,130,246,0.8)] group-hover:scale-125 transition-transform duration-300">
+                   <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20" />
+                </div>
+                <div className="mb-2 flex flex-col md:flex-row md:items-center md:justify-between bg-card/20 backdrop-blur-sm p-4 rounded-xl border border-white/5 shadow-sm group-hover:shadow-md transition-shadow">
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{job.role[language]}</h3>
+                  <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mt-2 md:mt-0 shadow-inner">
                     {job.period}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-lg font-medium text-muted-foreground mb-4">
-                  <Building2 className="w-5 h-5" />
+                <div className="flex items-center gap-2 text-lg font-bold text-slate-500 dark:text-slate-400 mb-4 px-2">
+                  <Building2 className="w-5 h-5 text-primary" />
                   {job.company}
                 </div>
-                <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
+                <div className="space-y-4 text-muted-foreground leading-relaxed text-justify px-2 relative">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 to-transparent rounded-full -ml-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {job.desc[language].map((p, i) => <p key={i}>{p}</p>)}
                 </div>
               </motion.div>

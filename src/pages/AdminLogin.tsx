@@ -2,50 +2,87 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Lock, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Lock, AlertCircle, ArrowLeft, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AdminLogin() {
   const [, setLocation] = useLocation();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    // Tentativa com o Supabase Real-time
+    if (import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY) {
+      try {
+        const { supabase } = await import('@/lib/supabase');
+        if (supabase) {
+          const { data, error } = await supabase
+            .from('admin_config')
+            .select('password')
+            .limit(1);
+            
+          if (!error && data && data.length > 0) {
+            if (data[0].password === password) {
+              sessionStorage.setItem('adminAuth', 'true');
+              setLocation('/admin/dashboard');
+              return;
+            } else {
+              setError('Acesso negado. Senha não confere no Banco de Dados.');
+              setIsLoading(false);
+              return;
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Erro na auth com supabase:", err);
+      }
+    }
+
+    // Fallback: Se não tem Supabase App config, verifica o local
     if (password === 'admin123') {
       sessionStorage.setItem('adminAuth', 'true');
       setLocation('/admin/dashboard');
     } else {
       setError('Acesso negado. Senha incorreta.');
     }
+    
+    setIsLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08),transparent_70%)] pointer-events-none" />
-      
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-slate-50 text-slate-900">
+      {/* Background Decorativo Clean/Light */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#e2e8f0,transparent_50%)] pointer-events-none" />
+      <div className="absolute -left-20 top-20 w-72 h-72 bg-blue-100 rounded-full blur-[100px] opacity-60" />
+      <div className="absolute -right-20 bottom-20 w-72 h-72 bg-emerald-100 rounded-full blur-[100px] opacity-60" />
+
       <button 
         onClick={() => setLocation('/')} 
-        className="absolute top-6 left-6 text-sm text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors z-10"
+        className="absolute top-6 left-6 text-sm text-slate-500 hover:text-slate-900 flex items-center gap-2 transition-colors z-10 font-medium"
       >
         <ArrowLeft className="w-4 h-4" /> Voltar ao site
       </button>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="w-full max-w-md z-10">
-        <Card className="shadow-2xl border-primary/10 bg-card/80 backdrop-blur-xl p-2 sm:p-4">
+        <Card className="shadow-2xl shadow-slate-200/50 border-white bg-white/70 backdrop-blur-xl p-2 sm:p-4 rounded-[28px]">
           <CardHeader className="text-center space-y-4">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto border border-primary/20 shadow-inner">
-              <Lock className="w-8 h-8 text-primary" />
+            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto border border-blue-100 shadow-sm">
+              <Lock className="w-8 h-8 text-blue-600" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold tracking-tight">Área Administrativa</CardTitle>
-              <CardDescription className="pt-2">Acesso restrito para gestão e métricas.</CardDescription>
+              <CardTitle className="text-2xl font-extrabold tracking-tight text-slate-900">Portal Administrativo</CardTitle>
+              <CardDescription className="pt-2 text-slate-500 font-medium">Autentique-se de forma segura.</CardDescription>
             </div>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6 mt-2">
               {error && (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-2 text-sm text-destructive bg-destructive/10 p-3 rounded-lg border border-destructive/20">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-xl border border-red-100 font-medium">
                   <AlertCircle className="w-4 h-4" />
                   {error}
                 </motion.div>
@@ -53,16 +90,16 @@ export default function AdminLogin() {
               <div className="space-y-2">
                 <input
                   type="password"
-                  placeholder="Senha de acesso"
-                  className="w-full flex h-12 rounded-xl border border-input bg-background/50 px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all focus:bg-background shadow-sm"
+                  placeholder="Sua senha secreta"
+                  className="w-full flex h-14 rounded-xl border border-slate-200 bg-white px-4 py-2 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   autoFocus
+                  disabled={isLoading}
                 />
-                <p className="text-[10px] text-muted-foreground/60 text-right">Dica: admin123</p>
               </div>
-              <Button type="submit" size="lg" className="w-full shadow-lg hover:shadow-primary/25 transition-all duration-300 rounded-xl font-medium">
-                Acessar Dashboard
+              <Button type="submit" size="lg" disabled={isLoading} className="w-full h-14 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 rounded-xl font-bold bg-blue-600 hover:bg-blue-700 text-white text-base">
+                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Acessar Painel'}
               </Button>
             </form>
           </CardContent>
